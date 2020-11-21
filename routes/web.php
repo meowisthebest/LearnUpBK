@@ -114,6 +114,27 @@ Route::get('/delete-chappter-content/{chappter_content_id}', 'ChappterContentCon
 Route::get('/unactive-video/{chappter_content_id}','ChappterContentController@unactive_videos');
 Route::get('/active-video/{chappter_content_id}','ChappterContentController@active_videos');
 
+//Account
+Route::get('/list-account-admin', 'UserController@showAdmin');
+Route::get('/list-account-user', 'UserController@showUser');
+
+Route::get('/add-admin', 'UserController@addAdmin');
+Route::post('/save-admin', 'UserController@saveAdmin');
+
+Route::get('/add-user', 'UserController@addUser');
+Route::post('/save-user', 'UserController@saveUser');
+
+Route::get('/edit-admin/{admin_id}', 'UserController@editAdmin');
+Route::post('/update-admin/{admin_id}', 'UserController@updateAdmin');
+
+Route::get('/edit-user/{student_id}', 'UserController@editUser');
+Route::post('/update-user/{student_id}', 'UserController@updateUser');
+
+Route::get('/delete-admin/{admin_id}', 'UserController@deleteAdmin');
+Route::get('/delete-user/{student_id}', 'UserController@deleteUser');
+
+
+
 
 
 

@@ -43,7 +43,7 @@
                     <td>{{$chappter->chappter_video}}</td>
                     <td>
                       <a href="{{URL::to('view-chappter-content/'.$chappter->chappter_id)}}" class="btn btn-outline-success mt-2"
-                        ><i class="fas fa-plus"></i> Xem videos</a
+                        ><i class="fas fa-video"></i> Xem videos</a
                       >
                       <a href="{{URL::to('/edit-chappter/'.$chappter->chappter_id)}}" class="btn btn-outline-primary mt-2"
                         ><i class="fas fa-edit"></i> Sửa</a

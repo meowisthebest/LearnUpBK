@@ -28,7 +28,17 @@ class AdminController extends Controller
     //Dashboard
     public function showDashboard(){
         $this->AuthLogin();
-        return view('Admin.Dashboard.dashboard');
+
+        $count_course = DB::table('tbl_course')->select('course_id')->count();
+        $count_student = DB::table('tbl_student')->select('student_id')->count();
+
+        $manager_course = view('Admin.Dashboard.dashboard')->with('count_course', $count_course)->with('count_student',$count_student);
+
+        // return view('admin_layout')->with('Admin.Users.edit_student', $manager_student);
+
+        // return view('Admin.Dashboard.dashboard')->with('count_course', $count_course);
+        return view('admin_layout')->with('Admin.Dashboard.dashboard', $manager_course);
+
     }
 
     //Check Login
@@ -55,6 +65,7 @@ class AdminController extends Controller
         Session::put('admin_id', null);
         return Redirect::to('/admin');
     }
+
 
     
 }
