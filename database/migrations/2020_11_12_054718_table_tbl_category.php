@@ -14,7 +14,7 @@ class TableTblCategory extends Migration
     public function up()
     {
         Schema::create('tbl_category', function (Blueprint $table) {
-            $table->Increments('category_id');
+            $table->bigIncrements('category_id');
             $table->string('category_name');
             $table->string('category_img');
             $table->timestamps();

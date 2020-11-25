@@ -14,14 +14,15 @@ class TableTblCourse extends Migration
     public function up()
     {
         Schema::create('tbl_course', function (Blueprint $table) {
-            $table->increments('course_id');
-            $table->integer('category_id');
+            $table->bigIncrements('course_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('course_name');
             $table->string('course_img');
             $table->string('course_lever');
             $table->text('course_overview');
             $table->text('course_learned');
             $table->timestamps();
+            $table->foreign('category_id')->references('category_id')->on('tbl_category');
         });
     }
 

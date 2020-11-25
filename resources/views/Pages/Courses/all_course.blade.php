@@ -61,7 +61,6 @@
                             </ul>
 
                             <button class="btn btn-theme full-width mb-2">Lọc</button>
-
                         </div>
 
                     </div>

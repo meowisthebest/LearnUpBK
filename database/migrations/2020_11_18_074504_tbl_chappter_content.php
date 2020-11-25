@@ -14,12 +14,14 @@ class TblChappterContent extends Migration
     public function up()
     {
         Schema::create('tbl_chappter_content', function (Blueprint $table) {
-            $table->increments('chappter_content_id');
-            $table->integer('chappter_id');
+            $table->bigIncrements('chappter_content_id');
+            $table->unsignedBigInteger('chappter_id');
             $table->string('chappter_content_name');
             $table->string('chappter_content_link');
             $table->integer('is_mandatory');
             $table->timestamps();
+            $table->foreign('chappter_id')->references('chappter_id')->on('tbl_chappter');
+
         });
     }
 

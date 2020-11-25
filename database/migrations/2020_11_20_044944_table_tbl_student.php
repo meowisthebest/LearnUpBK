@@ -14,7 +14,7 @@ class TableTblStudent extends Migration
     public function up()
     {
         Schema::create('tbl_student', function (Blueprint $table) {
-            $table->increments('student_id');
+            $table->bigIncrements('student_id');
             $table->string('student_username', 20);
             $table->string('student_password');
             $table->string('student_name');

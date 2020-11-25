@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableTblChappter extends Migration
+class TableTblStudentErrollment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class TableTblChappter extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_chappter', function (Blueprint $table) {
-            $table->bigIncrements('chappter_id');
+        Schema::create('tbl_student_err', function (Blueprint $table) {
+            $table->bigIncrements('err_id');
+            $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('course_id');
-            $table->string('chappter_name');
-            $table->string('chappter_video');
             $table->timestamps();
             $table->foreign('course_id')->references('course_id')->on('tbl_course');
+            $table->foreign('student_id')->references('student_id')->on('tbl_student');
 
         });
     }
@@ -31,6 +31,6 @@ class TableTblChappter extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_chappter');
+        Schema::dropIfExists('tbl_student_err');
     }
 }
