@@ -21,6 +21,7 @@
   <!-- Custom styles for this page -->
   <link href="{{asset('public/Admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"/>
 
+  <link href="{{asset('public/Admin/vendor/validation/validation.css')}}" rel="stylesheet"/>
 </head>
 
 <body id="page-top">
@@ -88,11 +89,25 @@
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
+      <!-- Nav Item - Blog -->
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fab fa-blogger-b"></i>
           <span>Tin tức</span></a>
+      </li>
+
+      <!-- Nav Item - Email -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/list-email')}}">
+          <i class="far fa-envelope"></i>
+          <span>Email</span></a>
+      </li>
+
+      <!-- Nav Item - Message -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{URL::to('/list-message')}}">
+          <i class="fas fa-envelope-open-text"></i>
+          <span>Message</span></a>
       </li>
 
       <!-- Divider -->
@@ -120,22 +135,11 @@
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            {{--  <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
@@ -153,7 +157,7 @@
                   </div>
                 </form>
               </div>
-            </li>
+            </li>  --}}
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -233,22 +237,30 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
   <script src="{{asset('public/Admin/vendor/jquery/jquery.min.js')}}"></script>
+
   <script src="{{asset('public/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-  <!-- Core plugin JavaScript-->
   <script src="{{asset('public/Admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-  <!-- Custom scripts for all pages-->
   <script src="{{asset('public/Admin/js/sb-admin-2.min.js')}}"></script>
 
-  <!-- Page level plugins -->
   <script src="{{asset('public/Admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-  <script src="{{asset('public/Admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-  <!-- Page level custom scripts -->
+  <script src="{{asset('public/Admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('public/Admin/js/demo/datatables-demo.js')}}"></script>
+
+  <script src="{{asset('public/Admin/ckeditor/ckeditor.js')}}"></script>
+
+  {{--  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>  --}}
+
+  <script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
+  <script>
+    CKEDITOR.replace('ckeditorOverview');
+    CKEDITOR.replace('ckeditorLearned');
+  </script>
+
+
 
   <script>
     function changeImg(input){

@@ -5588,6 +5588,23 @@ ul.list_ed_detail2 li.tag-5 strong, ul.list_ed_detail2 li.tag-5 i {
 	margin-right:10px;
 }
 /*---------- Video -------------*/
+.out4s{
+    animation: out ease-in-out 4s;
+}
+@keyframes out {
+    from   {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    to  {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+  }
+
 .property_video {
     position: relative;
 }

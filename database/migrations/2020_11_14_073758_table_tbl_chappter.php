@@ -17,7 +17,6 @@ class TableTblChappter extends Migration
             $table->bigIncrements('chappter_id');
             $table->unsignedBigInteger('course_id');
             $table->string('chappter_name');
-            $table->string('chappter_video');
             $table->timestamps();
             $table->foreign('course_id')->references('course_id')->on('tbl_course');
 

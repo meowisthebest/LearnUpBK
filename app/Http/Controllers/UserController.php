@@ -46,7 +46,7 @@ class UserController extends Controller
         $data['admin_address'] = $request->admin_address;
 
         DB::table('tbl_admin')->insert($data);
-        Session::put('message', 'Tài khoản đã được thêm thành công');
+        Session::put('message_admin', 'Tài khoản đã được thêm thành công');
         return Redirect::to('list-account-admin');
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
         $data['admin_address'] = $request->admin_address;
 
         DB::table('tbl_admin')->where('admin_id', $admin_id)->update($data);
-        Session::put('message', 'Tài khoản đã được cập nhật');
+        Session::put('message_admin', 'Tài khoản đã được cập nhật');
         return Redirect::to('list-account-admin');
     }
 
@@ -76,7 +76,7 @@ class UserController extends Controller
         $this->AuthLogin();
 
         DB::table('tbl_admin')->where('admin_id', $admin_id)->delete();
-        Session::put('message', 'Xóa tài khoản thành công');
+        Session::put('message_admin', 'Xóa tài khoản thành công');
         return Redirect::to('list-account-admin');
     }
 
@@ -108,7 +108,7 @@ class UserController extends Controller
         $data['student_introduce'] = $request->student_introduce;
 
         DB::table('tbl_student')->insert($data);
-        Session::put('message', 'Tài khoản đã được thêm thành công');
+        Session::put('message_user', 'Tài khoản đã được thêm thành công');
         return Redirect::to('list-account-user');
     }
 
@@ -131,7 +131,7 @@ class UserController extends Controller
         $data['student_address'] = $request->student_address;
         $data['student_introduce'] = $request->student_introduce;
         DB::table('tbl_student')->where('student_id', $student_id)->update($data);
-        Session::put('message', 'Tài khoản đã được cập nhật');
+        Session::put('message_user', 'Tài khoản đã được cập nhật');
         return Redirect::to('list-account-user');
     }
 
@@ -140,7 +140,36 @@ class UserController extends Controller
         $this->AuthLogin();
 
         DB::table('tbl_student')->where('student_id', $student_id)->delete();
-        Session::put('message', 'Xóa tài khoản thành công');
+        Session::put('message_user', 'Xóa tài khoản thành công');
         return Redirect::to('list-account-user');
+    }
+
+
+    //====================Front-End====================//
+
+    //Course
+    public function showInfoUser($student_id){
+        $view = DB::table('tbl_student')->where('student_id', $student_id)->get();
+        $manager_student = view('Pages.Users.info_user')->with('view', $view);
+
+        return view('page_layout')->with('Pages.Users.info_user', $manager_student);
+
+        // return view('Pages.Users.info_user');         
+    }
+
+    public function updateInfoUser(Request $request,$student_id){
+        $data = array();
+        // $data['student_username'] = $request->student_username;
+        // $data['student_password'] = md5($request->student_password);
+        $data['student_name'] = $request->student_name;
+        $data['student_email'] = $request->student_email;
+        $data['student_phone'] = $request->student_phone;
+        $data['student_address'] = $request->student_address;
+        $data['student_introduce'] = $request->student_introduce;
+        DB::table('tbl_student')->where('student_id', $student_id)->update($data);
+        Session::put('message_user', 'Tài khoản đã được cập nhật');
+        return back()->withInput();
+        // return view('Pages.Users.info_user');   
+
     }
 }

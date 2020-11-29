@@ -31,8 +31,19 @@ class AdminController extends Controller
 
         $count_course = DB::table('tbl_course')->select('course_id')->count();
         $count_student = DB::table('tbl_student')->select('student_id')->count();
+        $count_admin = DB::table('tbl_admin')->select('admin_id')->count();
+        $count_email = DB::table('tbl_listemail')->select('email_id')->count();
+        $count_message = DB::table('tbl_contact')->select('contact_id')->count();
 
-        $manager_course = view('Admin.Dashboard.dashboard')->with('count_course', $count_course)->with('count_student',$count_student);
+
+
+        $manager_course = view('Admin.Dashboard.dashboard')
+        ->with('count_course', $count_course)
+        ->with('count_student',$count_student)
+        ->with('count_admin',$count_admin)
+        ->with('count_email',$count_email)
+        ->with('count_message',$count_message)
+        ;
 
         // return view('admin_layout')->with('Admin.Users.edit_student', $manager_student);
 

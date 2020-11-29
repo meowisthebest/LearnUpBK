@@ -41,7 +41,9 @@ class CheckoutController extends Controller
     	}else{
     		return Redirect::to('/login-checkout');
     	}
-    }
+	}
+
+	
 
     public function logoutCheckout(){
     	Session::flush();

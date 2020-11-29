@@ -2,6 +2,16 @@
 @section('admin_content')
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+  <?php
+      $message_course = Session::get('message_course');
+      if($message_course){
+          echo '<div class="alert alert-success alert-dismissible out4s" role="alert"> 
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                    .$message_course.
+                '</div>';  
+          Session::put('message_course', null);
+      };
+  ?>
   <div class="card-header py-3 d-flex justify-content-between">
     <h6 class="m-0 font-weight-bold text-primary">
       Dánh sách khóa học

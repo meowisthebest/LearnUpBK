@@ -50,8 +50,8 @@ class ChappterContentController extends Controller
         $data['chappter_id'] = $request->chappter_id;
 
         DB::table('tbl_chappter_content')->insert($data);
-        Session::put('message', 'Thêm chương thành công');
-        return Redirect::to('list-course');
+        Session::put('message_ChappterContent', 'Thêm videos thành công');
+        return back()->withInput();
     }
 
     public function editChappterContent($chappter_content_id){
@@ -71,29 +71,26 @@ class ChappterContentController extends Controller
         $data['chappter_id'] = $request->chappter_id;
 
         DB::table('tbl_chappter_content')->where('chappter_content_id', $chappter_content_id)->update($data);
-        Session::put('message', 'Videos đã được cập nhật');
-        return Redirect::to('list-course');
+        Session::put('message_ChappterContent', 'Videos đã được cập nhật');
+        return back()->withInput();
     }
 
     public function deleteChappterContent($chappter_content_id){
         $this->AuthLogin();
         DB::table('tbl_chappter_content')->where('chappter_content_id', $chappter_content_id)->delete();
-
-        Session::put('message','Xóa videos thành công');
-        return Redirect::to('list-course');
+        Session::put('message_ChappterContent','Xóa videos thành công');
+        return back()->withInput();
     }
 
     public function active_videos($chappter_content_id){
         $this->AuthLogin();
         DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>0]);
-        // Session::put('message','Kích hoạt danh mục sản phẩm thành công');
-        return Redirect::to('list-course');
+        return back()->withInput();
 
     }
     public function unactive_videos($chappter_content_id){
         $this->AuthLogin();
         DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>1]);
-        // Session::put('message','Kích hoạt danh mục sản phẩm thành công');
-        return Redirect::to('list-course');
+        return back()->withInput();
     }
 }

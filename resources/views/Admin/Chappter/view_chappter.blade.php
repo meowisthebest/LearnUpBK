@@ -7,6 +7,16 @@
     <h1 class="h3 mb-0">Khóa: <span class="text-danger">{{$course_name->course_name}}</span></h1>
     @endforeach
 </div>
+<?php
+    $message_chappter = Session::get('message_chappter');
+    if($message_chappter){
+        echo '<div class="alert alert-success alert-dismissible out4s" role="alert"> 
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                .$message_chappter.
+             '</div>';  
+        Session::put('message_chappter', null);
+    };
+?>
 <div class="row">               
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
     <div class="card shadow mb-4">
@@ -32,7 +42,6 @@
               <thead>
                 <tr class="text-center">
                   <th>Tên chương</th>
-                  <th>Số videos</th>
                   <td>Hành động</td>
                 </tr>
               </thead>
@@ -40,7 +49,6 @@
                 @foreach ($view_chappter as $key => $chappter)
                   <tr class="text-center">
                     <td>{{$chappter->chappter_name}}</td>
-                    <td>{{$chappter->chappter_video}}</td>
                     <td>
                       <a href="{{URL::to('view-chappter-content/'.$chappter->chappter_id)}}" class="btn btn-outline-success mt-2"
                         ><i class="fas fa-video"></i> Xem videos</a

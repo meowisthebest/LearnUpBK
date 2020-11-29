@@ -61,14 +61,14 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <label>Tổng quan về khóa học</label>
-                            <textarea type="text" rows="8" name="course_overview" class="form-control" id="exampleInputPassword1">{{$course->course_overview}}</textarea>
+                            <textarea type="text" rows="8" name="course_overview" class="form-control" id="ckeditorOverview">{{$course->course_overview}}</textarea>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <label>Bạn sẽ học được gì</label>
-                            <textarea type="text" rows="8" name="course_learned" class="form-control" id="exampleInputPassword1">{{$course->course_learned}}</textarea>
+                            <textarea type="text" rows="8" name="course_learned" class="form-control" id="ckeditorLearned">{{$course->course_learned}}</textarea>
                         </div>
                     </div>
 

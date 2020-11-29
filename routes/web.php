@@ -44,16 +44,23 @@ Route::get('/chi-tiet-khoa-hoc/{product_id}', 'CourseController@courseDetail');
 Route::get('/tin-tuc', 'CourseController@showCourse');
 
 //Contact
-Route::get('/lien-he', 'CourseController@showCourse');
+Route::get('/lien-he', 'HomeController@showContact');
+Route::get('/save-contact','HomeController@saveContact');
 
 //Account
-Route::get('/tai-khoan', 'CourseController@showCourse');
+Route::get('/tai-khoan/{student_id}', 'UserController@showInfoUser');
+Route::post('/update-infouser/{student_id}', 'UserController@updateInfoUser');
 
 
+//Learn
+Route::get('/learn/{course_id}', 'CourseController@viewLearn');
+Route::post('/enrollment/{course_id}', 'CourseController@errCourse');
+
+//Email
+Route::get('/save-email','HomeController@saveEmail');
 
 
-
-//BACK - END
+//------------------------------------------------BACK - END------------------------------------------------//
 
 Route::get('/admin', 'AdminController@index');
 
@@ -89,7 +96,7 @@ Route::get('/delete-course/{course_id}', 'CourseController@deleteCourse');
 
 //Chappter
 
-Route::get('/view-chappter/{course_id}', 'ChappterController@viewChappter');
+Route::get('/view-chappter/{course_id}', 'ChappterController@viewChappter')->name('view-chappter');
 
 Route::get('/add-chappter', 'ChappterController@addChappter');
 Route::post('/save-chappter', 'ChappterController@saveChappter');
@@ -101,7 +108,7 @@ Route::get('/delete-chappter/{chappter_id}', 'ChappterController@deleteChappter'
 
 //Chappter-Content
 
-Route::get('/view-chappter-content/{chappter_id}', 'ChappterContentController@viewChappterContent');
+Route::get('/view-chappter-content/{chappter_id}', 'ChappterContentController@viewChappterContent')->name('view-chappter-content');
 
 Route::get('/add-chappter-content', 'ChappterContentController@addChappterContent');
 Route::post('/save-chappter-content', 'ChappterContentController@saveChappterContent');
@@ -132,6 +139,13 @@ Route::post('/update-user/{student_id}', 'UserController@updateUser');
 
 Route::get('/delete-admin/{admin_id}', 'UserController@deleteAdmin');
 Route::get('/delete-user/{student_id}', 'UserController@deleteUser');
+
+//Email
+Route::get('/list-email', 'EmailController@listEmail');
+
+//Message
+Route::get('/list-message', 'EmailController@listMessage');
+
 
 
 

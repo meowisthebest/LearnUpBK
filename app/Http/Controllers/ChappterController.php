@@ -53,8 +53,8 @@ class ChappterController extends Controller
         $data['chappter_name'] = $request->chappter_name;
         $data['course_id'] = $request->course_id;
         DB::table('tbl_chappter')->insert($data);
-        Session::put('message', 'Thêm chương thành công');
-        return Redirect::to('add-chappter');
+        Session::put('message_chappter', 'Thêm chương thành công');
+        return back()->withInput();
     }
 
     public function editChappter($chappter_id){
@@ -71,15 +71,16 @@ class ChappterController extends Controller
         $data['course_id'] = $request->course_id;
 
         DB::table('tbl_chappter')->where('chappter_id', $chappter_id)->update($data);
-        Session::put('message', 'Chương đã được cập nhật');
-        return Redirect::to('list-course');
+        Session::put('message_chappter', 'Chương đã được cập nhật');
+        return back()->withInput();
+
     }
 
     public function deleteChappter($chappter_id){
         $this->AuthLogin();
 
         DB::table('tbl_chappter')->where('chappter_id', $chappter_id)->delete();
-        Session::put('message', 'Xóa chương thành công');
-        return Redirect::to('list-course');
+        Session::put('message_chappter', 'Xóa chương thành công');
+        return back()->withInput();
     }
 }

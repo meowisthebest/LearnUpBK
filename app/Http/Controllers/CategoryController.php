@@ -49,11 +49,11 @@ class CategoryController extends Controller
             $get_image->move('public/uploads/category', $new_image);
             $data['category_img'] = $new_image;
             DB::table('tbl_category')->insert($data);
-            Session::put('message', 'Danh mục đã được thêm');
+            Session::put('message_category', 'Danh mục đã được thêm');
             return Redirect::to('list-category');
         }
         DB::table('tbl_category')->insert($data);
-        Session::put('message', 'Danh mục đã được thêm');
+        Session::put('message_category', 'Danh mục đã được thêm');
         return Redirect::to('list-category');
     }
 
@@ -77,11 +77,11 @@ class CategoryController extends Controller
             $get_image->move('public/uploads/category', $new_image);
             $data['category_img'] = $new_image;
             DB::table('tbl_category')->where('category_id', $category_id)->update($data);
-            Session::put('message', 'Danh mục đã được cập nhật');
+            Session::put('message_category', 'Danh mục đã được cập nhật');
             return Redirect::to('list-category');
         }
         DB::table('tbl_category')->where('category_id', $category_id)->update($data);
-        Session::put('message', 'Danh mục đã được cập nhật');
+        Session::put('message_category', 'Danh mục đã được cập nhật');
         return Redirect::to('list-category');
     }
 
@@ -89,7 +89,7 @@ class CategoryController extends Controller
         $this->AuthLogin();
 
         DB::table('tbl_category')->where('category_id', $category_id)->delete();
-        Session::put('message', 'Xóa danh mục thành công');
+        Session::put('message_category', 'Xóa danh mục thành công');
         return Redirect::to('list-category');
     }
 
@@ -99,7 +99,7 @@ class CategoryController extends Controller
         $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
         $category_by_id = DB::table('tbl_course')
         ->join('tbl_category','tbl_course.category_id', '=', 'tbl_category.category_id')
-        ->where('tbl_course.category_id',$category_id)->get();
+        ->where('tbl_course.category_id',$category_id)->paginate(5);
 
         //Lấy tên danh mục
         $category_name = DB::table('tbl_category')->where('tbl_category.category_id', $category_id)->limit(1)->get();

@@ -4,13 +4,13 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <?php
-      $message = Session::get('message');
-      if($message){
-          echo '<div class="alert alert-success alert-dismissible" role="alert"> 
+      $message_admin = Session::get('message_admin');
+      if($message_admin){
+          echo '<div class="alert alert-success alert-dismissible out4s" role="alert"> 
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
-                    .$message.
+                    .$message_admin.
                 '</div>';  
-          Session::put('message', null);
+          Session::put('message_admin', null);
       };
   ?>
   <div class="card-header py-3 d-flex justify-content-between">

@@ -28,10 +28,34 @@ class HomeController extends Controller
         $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->limit(6)->get();
 
 
-        $search_course = DB::table('tbl_course')->where('course_name','like','%'.$keywords.'%')->get(); 
+        $search_course = DB::table('tbl_course')->where('course_name','like','%'.$keywords.'%')->paginate(5); 
 
 
         return view('Pages.Courses.search_course')->with('category',$category)->with('search_course',$search_course);
 
+    }
+
+    
+
+    public function saveEmail(Request $request){
+        $data = array();
+        $data['email'] = $request->email;
+        DB::table('tbl_listemail')->insert($data);
+        return back()->withInput();
+    }
+
+    public function showContact(){
+        return view('Pages.Contacts.contact');
+    }
+
+    public function saveContact(Request $request){
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['title'] = $request->title;
+        $data['message'] = $request->message;
+        DB::table('tbl_contact')->insert($data);
+        Session::put('message_contact', 'LearnUp đã nhận được tin nhắn. Chúng tôi sẽ phản hồi lại sớm nhất có thể. Xin cảm ơn!!');
+        return back()->withInput();
     }
 }

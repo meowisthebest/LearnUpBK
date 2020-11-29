@@ -39,9 +39,23 @@
 								<a href="{{URL::to('/lien-he')}}">Liên Hệ</a>
 							</li>
 
+							<?php
+								$student_id = Session::get('student_id');
+								if($student_id != null){ 
+							?>
 							<li>
-								<a href="{{URL::to('/tai-khoan')}}">Tài Khoản</a>
+								<a href="{{URL::to('/tai-khoan/'.Session::get('student_id'))}}">Tài Khoản</a>
 							</li>
+							
+							<?php
+								}else{
+							?>
+							<li>
+								<a href="{{URL::to('/login-checkout')}}">Tài Khoản</a>
+							</li>
+							<?php 
+								}
+							?>
 							
 						</ul>
 						
@@ -172,156 +186,6 @@
 						</div>	
 					</div>
 					@endforeach
-{{-- 					
-					
-					<!-- Cource Grid 1 -->
-					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-						<div class="education_block_list_layout">
-							
-							<div class="education_block_thumb n-shadow">
-								<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/co-3.jpg')}}" class="img-fluid" alt=""></a>
-							</div>
-							
-							<div class="list_layout_ecucation_caption">
-							
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="detail-3.html">Full Web Designing Course</a></h4>
-								</div>
-
-								<div class="education_block_footer mt-3">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="{{('public/Learnup/assets/img/user-2.jpg')}}" class="img-fluid" alt=""></a></div>
-									</div>
-									<div class="cources_info_style3">
-										<ul>
-											<li><div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>14 Bài giảng</div></li>
-										</ul>
-									</div>
-								</div>
-							
-							</div>
-							
-						</div>	
-					</div>
-					
-					<!-- Cource Grid 1 -->
-					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-						<div class="education_block_list_layout">
-							
-							<div class="education_block_thumb n-shadow">
-								<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/co-4.jpg')}}" class="img-fluid" alt=""></a>
-							</div>
-							
-							<div class="list_layout_ecucation_caption">
-							
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="detail-3.html">Adobe Dreamwear Flash Coded</a></h4>
-								</div>
-
-								<div class="education_block_footer mt-3">
-									<div class="education_block_author">
-									</div>
-									<div class="cources_info_style3">
-										<ul>
-											<li><div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>25 Bài giảng</div></li>
-										</ul>
-									</div>
-								</div>
-							
-							</div>
-							
-						</div>	
-					</div>
-					
-					<!-- Cource Grid 1 -->
-					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-						<div class="education_block_list_layout">
-							
-							<div class="education_block_thumb n-shadow">
-								<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/co-5.jpg')}}" class="img-fluid" alt=""></a>
-							</div>
-							
-							<div class="list_layout_ecucation_caption">
-							
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="detail-3.html">Learn Full Photoshop Course CS6</a></h4>
-								</div>
-
-								<div class="education_block_footer mt-3">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="{{('public/Learnup/assets/img/user-4.jpg')}}" class="img-fluid" alt=""></a></div>
-									</div>
-									<div class="cources_info_style3">
-										<ul>
-											<li><div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>54 Bài giảng</div></li>
-										</ul>
-									</div>
-								</div>
-							
-							</div>
-							
-						</div>	
-					</div>
-					
-					<!-- Cource Grid 1 -->
-					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-						<div class="education_block_list_layout">
-							
-							<div class="education_block_thumb n-shadow">
-								<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/co-6.jpg')}}" class="img-fluid" alt=""></a>
-							</div>
-							
-							<div class="list_layout_ecucation_caption">
-							
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="detail-3.html">Business Analysis Full Courses</a></h4>
-								</div>
-
-								<div class="education_block_footer mt-3">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="{{('public/Learnup/assets/img/user-5.jpg')}}" class="img-fluid" alt=""></a></div>
-									</div>
-									<div class="cources_info_style3">
-										<ul>
-											<li><div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>70 Bài giảng</div></li>
-										</ul>
-									</div>
-								</div>
-							
-							</div>
-							
-						</div>	
-					</div>
-					
-					<!-- Cource Grid 1 -->
-					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-						<div class="education_block_list_layout">
-							
-							<div class="education_block_thumb n-shadow">
-								<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/co-7.jpg')}}" class="img-fluid" alt=""></a>
-							</div>
-							
-							<div class="list_layout_ecucation_caption">
-							
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="detail-3.html">Learn To Create WP Theme</a></h4>
-								</div>
-
-								<div class="education_block_footer mt-3">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="{{('public/Learnup/assets/img/user-6.jpg')}}" class="img-fluid" alt=""></a></div>
-									</div>
-									<div class="cources_info_style3">
-										<ul>
-											<li><div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>26 Bài giảng</div></li>
-										</ul>
-									</div>
-								</div>
-							
-							</div>
-							
-						</div>	
-					</div> --}}
 					
 					
 				</div>
@@ -406,111 +270,6 @@
 									</div>
 								</div>
 							@endforeach
-							
-							{{-- <!-- Single Slide -->
-							<div class="singles_items">
-								<div class="education_block_grid style_2">
-							
-									<div class="education_block_thumb">
-										<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/course-3.jpg')}}" class="img-fluid" alt=""></a>
-									</div>
-									
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="detail-3.html">An Entire MBA In 1 Course:Award Winning Business School Prof</a></h4>
-									</div>
-									
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="ti-control-skip-forward mr-2"></i>47 Bài giảng</li>
-											<li><i class="ti-time mr-2"></i>6h 30min</li>
-										</ul>
-									</div>
-								</div>		
-							</div>
-							
-							<!-- Single Slide -->
-							<div class="singles_items">
-								<div class="education_block_grid style_2">
-							
-									<div class="education_block_thumb">
-										<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/course-4.jpg')}}" class="img-fluid" alt=""></a>
-									</div>
-									
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="detail-3.html">The Complete Financial Analyst Course 2020</a></h4>
-									</div>
-									
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="ti-control-skip-forward mr-2"></i>52 Bài giảng</li>
-											<li><i class="ti-time mr-2"></i>5h 15min</li>
-										</ul>
-									</div>
-								</div>			
-							</div>
-							
-							<!-- Single Slide -->
-							<div class="singles_items">
-								<div class="education_block_grid style_2">
-							
-									<div class="education_block_thumb">
-										<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/course-5.jpg')}}" class="img-fluid" alt=""></a>
-									</div>
-									
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="detail-3.html">PMP Exam Prep Seminar - PMBOK Guide 6</a></h4>
-									</div>
-									
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="ti-control-skip-forward mr-2"></i>32 Bài giảng</li>
-											<li><i class="ti-time mr-2"></i>3h 30min</li>
-										</ul>
-									</div>
-								</div>	
-							</div>
-							
-							<!-- Single Slide -->
-							<div class="singles_items">
-								<div class="education_block_grid style_2">
-							
-									<div class="education_block_thumb">
-										<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/course-6.jpg')}}" class="img-fluid" alt=""></a>
-									</div>
-									
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="detail-3.html">Tableau 2020 A-Z:Hands-On Tableau Training For Data Science!</a></h4>
-									</div>
-									
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="ti-control-skip-forward mr-2"></i>62 Bài giảng</li>
-											<li><i class="ti-time mr-2"></i>3h 10min</li>
-										</ul>
-									</div>
-								</div>			
-							</div>
-							
-							<!-- Single Slide -->
-							<div class="singles_items">
-								<div class="education_block_grid style_2">
-							
-									<div class="education_block_thumb">
-										<a href="detail-3.html"><img src="{{('public/Learnup/assets/img/course-1.jpg')}}" class="img-fluid" alt=""></a>
-									</div>
-									
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="detail-3.html">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-									</div>
-									
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="ti-control-skip-forward mr-2"></i>63 Bài giảng</li>
-											<li><i class="ti-time mr-2"></i>6h 30min</li>
-										</ul>
-									</div>
-								</div>		
-							</div> --}}
 						
 						</div>
 					</div>
@@ -529,8 +288,9 @@
 						<div class="text-center">
 							<h2>Theo dõi chúng tôi</h2>
 							<p>Nhập email để đăng ký nhận những thông tin hữu ích về học tập từ LearnUp</p>
-							<form class="sup-form">
-								<input type="email" class="form-control sigmup-me" placeholder="Email của bạn" required="required">
+							<form action="{{URL::to('/save-email')}}" class="sup-form">
+								<input type="email" name="email" class="form-control sigmup-me" placeholder="Email của bạn"
+									required="required">
 								<input type="submit" class="btn btn-theme" value="Đăng Ký">
 							</form>
 						</div>

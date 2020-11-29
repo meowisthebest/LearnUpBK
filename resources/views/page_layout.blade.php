@@ -44,9 +44,24 @@
 								<a href="{{URL::to('/lien-he')}}">Liên Hệ</a>
 							</li>
 
+
+							<?php
+								$student_id = Session::get('student_id');
+								if($student_id != null){ 
+							?>
 							<li>
-								<a href="{{URL::to('/tai-khoan')}}">Tài Khoản</a>
+								<a href="{{URL::to('/tai-khoan/'.Session::get('student_id'))}}">Tài Khoản</a>
 							</li>
+							
+							<?php
+								}else{
+							?>
+							<li>
+								<a href="{{URL::to('/login-checkout')}}">Tài Khoản</a>
+							</li>
+							<?php 
+								}
+							?>
 							
 						</ul>
 
@@ -91,8 +106,8 @@
 						<div class="text-center">
 							<h2>Theo dõi chúng tôi</h2>
 							<p>Nhập email để đăng ký nhận những thông tin hữu ích về học tập từ LearnUp</p>
-							<form class="sup-form">
-								<input type="email" class="form-control sigmup-me" placeholder="Email của bạn"
+							<form action="{{URL::to('/save-email')}}" class="sup-form">
+								<input type="email" name="email" class="form-control sigmup-me" placeholder="Email của bạn"
 									required="required">
 								<input type="submit" class="btn btn-theme" value="Đăng Ký">
 							</form>

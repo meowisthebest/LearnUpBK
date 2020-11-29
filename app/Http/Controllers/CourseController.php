@@ -59,11 +59,11 @@ class CourseController extends Controller
             $get_image->move('public/uploads/course', $new_image);
             $data['course_img'] = $new_image;
             DB::table('tbl_course')->insert($data);
-            Session::put('message', 'Khóa học đã được thêm');
+            Session::put('message_course', 'Khóa học đã được thêm');
             return Redirect::to('list-course');
         }
         DB::table('tbl_course')->insert($data);
-        Session::put('message', 'Khóa học đã được thêm');
+        Session::put('message_course', 'Khóa học đã được thêm');
         return Redirect::to('list-course');
     }
 
@@ -92,11 +92,11 @@ class CourseController extends Controller
             $get_image->move('public/uploads/course', $new_image);
             $data['course_img'] = $new_image;
             DB::table('tbl_course')->where('course_id', $course_id)->update($data);
-            Session::put('message', 'Khóa học đã được cập nhật');
+            Session::put('message_course', 'Khóa học đã được cập nhật');
             return Redirect::to('list-course');
         }
         DB::table('tbl_course')->where('course_id', $course_id)->update($data);
-        Session::put('message', 'Khóa học đã được cập nhật');
+        Session::put('message_course', 'Khóa học đã được cập nhật');
         return Redirect::to('list-course');
     }
 
@@ -104,7 +104,7 @@ class CourseController extends Controller
         $this->AuthLogin();
 
         DB::table('tbl_course')->where('course_id', $course_id)->delete();
-        Session::put('message', 'Xóa khóa học thành công');
+        Session::put('message_course', 'Xóa khóa học thành công');
         return Redirect::to('list-course');
     }
 
@@ -113,11 +113,11 @@ class CourseController extends Controller
 
         //Course
         public function showCourse(){
-            $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->limit(6)->get();
+            $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
 
-            $all_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->limit(6)->get();
+            $all_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->paginate(5);
 
-            return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course);           
+            return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course);         
         }
 
         public function courseDetail($course_id){
@@ -131,12 +131,17 @@ class CourseController extends Controller
 
             foreach($chappter_course as $key => $value){
                 $chappter_id = $value->chappter_id;
+
+                $chappter_name = DB::table('tbl_chappter_content')
+                ->select('tbl_chappter_content.chappter_content_name')
+                ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+                ->where('tbl_chappter.chappter_id', $chappter_id)->get();
             }
 
-            $chappter_name = DB::table('tbl_chappter')
-            ->select('tbl_chappter_content.chappter_content_name')
-            ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
-            ->where('tbl_chappter.chappter_id', $chappter_id)->get();
+            // $chappter_name = DB::table('tbl_chappter')
+            // ->select('tbl_chappter_content.chappter_content_name')
+            // ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+            // ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
             return view('Pages.Courses.course_detail')
             ->with('course_detail',$course_detail)
@@ -151,5 +156,44 @@ class CourseController extends Controller
             // $chappter_name = DB::table('tbl_chappter')
             // ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
             // ->where('tbl_chappter.chappter_id', $chappter_id)->get();
+        }
+
+        public function viewLearn(){
+            return view('Pages.Courses.learn_course');
+        }
+        
+        public function errCourse($course_id){
+            $err_data = array();
+            $err_data['student_id'] = Session::get('student_id');
+            // $err_data['course_id'] = Session::get('course_id');
+
+            $err_data['course_id'] = $course_id;
+            DB::table('tbl_student_err')->insert($err_data);
+            // return view('Pages.Courses.learn_course');
+            // return Redirect::to('trang-chu'); 
+
+
+            $course_detail = DB::table('tbl_course')
+            ->join('tbl_category','tbl_category.category_id', '=','tbl_course.category_id')
+            ->where('tbl_course.course_id', $course_id)->get();
+
+            $chappter_course = DB::table('tbl_chappter')
+            ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
+            ->where('tbl_course.course_id', $course_id)->get();
+
+            foreach($chappter_course as $key => $value){
+                $chappter_id = $value->chappter_id;
+            }
+            
+            $chappter_name = DB::table('tbl_chappter_content')
+                ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
+                ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+                ->where('tbl_chappter.chappter_id', $chappter_id)->get();
+
+            return view('Pages.Courses.learn_course')
+            ->with('course_detail',$course_detail)
+            ->with('chappter_course',$chappter_course)
+            ->with('chappter_name', $chappter_name);
+
         }
 }

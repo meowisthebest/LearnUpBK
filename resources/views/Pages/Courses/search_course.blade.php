@@ -141,7 +141,8 @@
                         <!-- Pagination -->
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <ul class="pagination p-center">
+                                {{ $search_course->links() }}
+                                {{-- <ul class="pagination p-center">
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Previous">
                                             <span class="ti-arrow-left"></span>
@@ -159,7 +160,7 @@
                                             <span class="sr-only">Next</span>
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
 

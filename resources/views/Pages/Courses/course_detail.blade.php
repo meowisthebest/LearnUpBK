@@ -15,6 +15,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             
             <div class="col-lg-8 col-md-7">
                 <div class="ed_detail_wrap">
@@ -29,7 +32,7 @@
                         </ul>
                     </div>
                     <div class="ed_header_short">
-                        <p>{{$value->course_overview}}</p>
+                        <p>{!!$value->course_overview!!}</p>
                     </div>
                     
                 </div>
@@ -47,17 +50,15 @@
         <div class="row">
         
             <div class="col-lg-8 col-md-8">
-                
                 <!-- Overview -->
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Tổng quan về khóa học</h4>
-                    <p>{{$value->course_overview}}</p>		
+                    {!!$value->course_overview!!}		
                     <h6>Yêu cầu</h6>
                     <ul class="lists-3">
-                        <li>{{$value->course_learned}}</li>
+                        {!!$value->course_learned!!}
                     </ul>
-                </div>
-                
+                </div>              
 
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Chi tiết khóa học</h4>
@@ -137,14 +138,6 @@
                     <div class="review-form-box form-submit">
                         <form>
                             <div class="row">
-                                
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Họ và Tên: </label>
-                                        <input class="form-control" type="text" placeholder="Your Name">
-                                    </div>
-                                </div>
-                                
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label>Nhận xét: </label>
@@ -174,9 +167,26 @@
                         <li><i class="ti-time"></i>Thời lượng:<strong>60 giờ</strong></li>
                         <li><i class="ti-tag"></i>Yêu cầu kỹ năng:<strong>{{$value->course_lever}}</strong></li>
                     </ul>
-                    <div class="ed_view_link">
-                        <a href="video-course.html" class="btn btn-theme enroll-btn">Học Ngay<i class="ti-angle-right"></i></a>
-                    </div>
+                    <?php
+                        $student_id = Session::get('student_id');
+                        if($student_id != null){ 
+                    ?>
+                        <form action="{{URL::to('/enrollment/'.$value->course_id)}}" method="post">
+                            {{ csrf_field() }}
+                            <div class="ed_view_link">
+                                <button type="submit" class="btn btn-theme enroll-btn">Học Ngay<i class="ti-angle-right"></i></button>
+                            </div>
+                        </form> 
+                    
+                    <?php
+                        }else{
+                    ?>
+                        <div class="ed_view_link">
+                            <a href="{{URL::to('/login-checkout')}}" class="btn btn-theme enroll-btn">Học Ngay<i class="ti-angle-right"></i></a>
+                        </div>
+                    <?php 
+                        }
+                    ?>
                 </div>
                 
             </div>

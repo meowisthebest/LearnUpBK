@@ -9,6 +9,16 @@
 </div>
 <div class="row">               
   <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+    <?php
+            $message_ChappterContent = Session::get('message_ChappterContent');
+            if($message_ChappterContent){
+                echo '<div class="alert alert-success alert-dismissible" role="alert"> 
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                        .$message_ChappterContent.
+                    '</div>';  
+                Session::put('message_ChappterContent', null);
+            };
+        ?>
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">
