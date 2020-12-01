@@ -157,6 +157,22 @@ class UserController extends Controller
         // return view('Pages.Users.info_user');         
     }
 
+    public function showMyCourse($student_id){
+        $view_info = DB::table('tbl_student')->where('student_id', $student_id)->get();
+
+        $view_course = DB::table('tbl_student_err')
+        ->join('tbl_course','tbl_course.course_id','=','tbl_student_err.course_id')
+        ->where('student_id', $student_id)->paginate(5);
+
+
+        $manager_student = view('Pages.Users.my_course')
+        ->with('view', $view_course)
+        ->with('view_info', $view_info);
+
+        return view('page_layout')->with('Pages.Users.my_course', $manager_student);       
+    }
+
+
     public function updateInfoUser(Request $request,$student_id){
         $data = array();
         // $data['student_username'] = $request->student_username;

@@ -15,7 +15,7 @@
   ?>
   <div class="card-header py-3 d-flex justify-content-between">
     <h6 class="m-0 font-weight-bold text-primary">
-      Dánh sách danh mục khóa học
+      Danh sách danh mục khóa học
     </h6>
     <a href="{{URL::to('/add-category')}}" class="btn btn-primary">Thêm danh mục</a>
     

@@ -40,16 +40,16 @@
               cellspacing="0"
             >
               <thead>
-                <tr class="text-center">
+                <tr>
                   <th>Tên chương</th>
-                  <td>Hành động</td>
+                  <td class="text-center">Hành động</td>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($view_chappter as $key => $chappter)
-                  <tr class="text-center">
+                  <tr>
                     <td>{{$chappter->chappter_name}}</td>
-                    <td>
+                    <td class="text-center">
                       <a href="{{URL::to('view-chappter-content/'.$chappter->chappter_id)}}" class="btn btn-outline-success mt-2"
                         ><i class="fas fa-video"></i> Xem videos</a
                       >

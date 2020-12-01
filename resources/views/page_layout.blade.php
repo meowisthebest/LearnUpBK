@@ -129,8 +129,8 @@
 								<img src="{{asset('public/Learnup/assets/img/logo-light.png')}}" class="img-footer" alt="" />
 								<div class="footer-add">
 									<p><i class="fa fa-location-arrow" aria-hidden="true"></i> 450 Tran Dai Nghia, Ngu Hanh Son, Da Nang</p>
-									<p><i class="fa fa-phone" aria-hidden="true"></i> +84 961 340 573</p>
-									<p><i class="fa fa-envelope" aria-hidden="true"></i> nguyenminhlong@learnup.com</p>
+									<p><i class="fa fa-phone" aria-hidden="true"></i> +84 961 377 523</p>
+									<p><i class="fa fa-envelope" aria-hidden="true"></i> support@learnup.com</p>
 								</div>
 								
 							</div>
@@ -191,7 +191,7 @@
 					<div class="row align-items-center">
 						
 						<div class="col-lg-6 col-md-6">
-							<p class="mb-0">© 2020 LearnUp. Designd By <a href="#">Nguyen Minh Long</a>.</p>
+							<p class="mb-0">© 2020 LearnUp. Designd By <a href="#">Mèo</a>.</p>
 						</div>
 						
 						<div class="col-lg-6 col-md-6 text-right">

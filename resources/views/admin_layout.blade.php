@@ -91,7 +91,7 @@
 
       <!-- Nav Item - Blog -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{URL::to('/list-blog')}}">
           <i class="fab fa-blogger-b"></i>
           <span>Tin tức</span></a>
       </li>
@@ -138,27 +138,6 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-
-            {{--  <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>  --}}
-
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -256,11 +235,10 @@
 
   <script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
   <script>
-    CKEDITOR.replace('ckeditorOverview');
     CKEDITOR.replace('ckeditorLearned');
+    CKEDITOR.replace('ckeditorBlog');
+    CKEDITOR.replace( 'ckeditorOverview');
   </script>
-
-
 
   <script>
     function changeImg(input){

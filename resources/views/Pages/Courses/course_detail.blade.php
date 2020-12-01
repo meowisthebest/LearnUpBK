@@ -54,7 +54,7 @@
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Tổng quan về khóa học</h4>
                     {!!$value->course_overview!!}		
-                    <h6>Yêu cầu</h6>
+                    <h6>Bạn sẽ học được gì</h6>
                     <ul class="lists-3">
                         {!!$value->course_learned!!}
                     </ul>
@@ -141,7 +141,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label>Nhận xét: </label>
-                                        <textarea class="form-control ht-140" placeholder="Review"></textarea>
+                                        <textarea class="form-control ht-140" placeholder="Viết nhận xét"></textarea>
                                     </div>
                                 </div>
                                 

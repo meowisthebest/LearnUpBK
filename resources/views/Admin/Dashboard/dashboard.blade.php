@@ -66,7 +66,7 @@
               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tổng số bài đăng đã tạo</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$count_admin}}</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$count_blog}}</div>
                 </div>
               </div>
             </div>

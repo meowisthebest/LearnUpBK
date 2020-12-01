@@ -41,6 +41,7 @@
             >
               <thead>
                 <tr class="text-center">
+                  <th>ID</th>
                   <th>Tên bài học</th>
                   <th>Link videos</th>
                   <th>Đã học</th>
@@ -50,6 +51,7 @@
               <tbody>
                 @foreach ($view_chappter_content as $key => $chappter_content)
                   <tr class="text-center">
+                    <td>{{$chappter_content->chappter_content_id}}</td>
                     <td>{{$chappter_content->chappter_content_name}}</td>
                     <td>{{$chappter_content->chappter_content_link}}</td>
                     <td>

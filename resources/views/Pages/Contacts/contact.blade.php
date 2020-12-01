@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="cn-info-content">
                                     <h4 class="cn-info-title">Email</h4>
-                                    nguyenminhlong@learnup.com
+                                    admin@learnup.com
                                     <br>support@learnup.com
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="cn-info-content">
                                     <h4 class="cn-info-title">Gọi cho chúng tôi</h4>
-                                    +84 961 340 573<br> +84 845 143 527
+                                    +84 961 377 523<br> +84 845 127 527
                                 </div>
                             </div>
                             

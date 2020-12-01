@@ -41,7 +41,9 @@ Route::get('/khoa-hoc', 'CourseController@showCourse');
 Route::get('/chi-tiet-khoa-hoc/{product_id}', 'CourseController@courseDetail');
 
 //Blog
-Route::get('/tin-tuc', 'CourseController@showCourse');
+Route::get('/tin-tuc', 'BlogController@showBlog');
+Route::get('/tin-tuc/{blog_id}','BlogController@showBlogDetail');
+
 
 //Contact
 Route::get('/lien-he', 'HomeController@showContact');
@@ -50,6 +52,8 @@ Route::get('/save-contact','HomeController@saveContact');
 //Account
 Route::get('/tai-khoan/{student_id}', 'UserController@showInfoUser');
 Route::post('/update-infouser/{student_id}', 'UserController@updateInfoUser');
+
+Route::get('/khoa-hoc-cua-toi/{student_id}', 'UserController@showMyCourse');
 
 
 //Learn
@@ -139,6 +143,17 @@ Route::post('/update-user/{student_id}', 'UserController@updateUser');
 
 Route::get('/delete-admin/{admin_id}', 'UserController@deleteAdmin');
 Route::get('/delete-user/{student_id}', 'UserController@deleteUser');
+
+//Blog
+Route::get('/list-blog', 'BlogController@listBlog');
+
+Route::get('/add-blog', 'BlogController@addBlog');
+Route::post('/save-blog', 'BlogController@saveBlog');
+
+Route::get('/edit-blog/{blog_id}', 'BlogController@editBlog');
+Route::post('/update-blog/{blog_id}', 'BlogController@updateBlog');
+
+Route::get('/delete-blog/{blog_id}', 'BlogController@deleteBlog');
 
 //Email
 Route::get('/list-email', 'EmailController@listEmail');

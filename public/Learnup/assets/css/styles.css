@@ -7174,7 +7174,7 @@ p.description {
     list-style: none;
 }
 .blog-page .article_detail_wrapss .article_bottom_info .post-share .list li {
-    display: inline-block;
+    display: inline-block !important;
     margin-right: 22px;
 }
 .blog-page .article_detail_wrapss .article_bottom_info .post-share .list li:last-child{

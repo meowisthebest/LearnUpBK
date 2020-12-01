@@ -34,6 +34,8 @@ class AdminController extends Controller
         $count_admin = DB::table('tbl_admin')->select('admin_id')->count();
         $count_email = DB::table('tbl_listemail')->select('email_id')->count();
         $count_message = DB::table('tbl_contact')->select('contact_id')->count();
+        $count_blog = DB::table('tbl_blog')->select('blog_id')->count();     
+
 
 
 
@@ -43,6 +45,7 @@ class AdminController extends Controller
         ->with('count_admin',$count_admin)
         ->with('count_email',$count_email)
         ->with('count_message',$count_message)
+        ->with('count_blog',$count_blog)
         ;
 
         // return view('admin_layout')->with('Admin.Users.edit_student', $manager_student);

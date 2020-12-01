@@ -13,8 +13,9 @@
             <div class="col-lg-3 col-md-3 p-0">
                 <div class="dashboard-navbar">
                     <div class="d-user-avater">
-                        <img src="{{asset('public/Learnup/assets/img/user-img.jpg')}}" class="img-fluid avater" alt="" />
-                        <h4>{{$value->student_username}}</h4>
+                        {{--  <img src="{{asset('public/Learnup/assets/img/user-img.jpg')}}" class="img-fluid avater" alt="" />  --}}
+                        <img src="https://i.pinimg.com/originals/3d/1a/da/3d1ada2607633fd746c7f03f2c7a7bab.jpg" class="img-fluid avater" alt="" />
+                        <h4>{{$value->student_name}}</h4>
                         <span>{{$value->student_address}}</span>
                     </div>
                     
@@ -22,14 +23,16 @@
                     <div class="d-navigation">
                         <ul id="side-menu">
                             <li class="active">
-                                <a href="settings.html"><i class="ti-settings"></i>Thông tin tài khoản</a>
+                                <a href="{{URL::to('/tai-khoan/'.Session::get('student_id'))}}"><i class="ti-settings"></i>Thông tin tài khoản</a>
                             </li>
                             <li>
-                                <a href="all-courses.html"><i class="ti-layers"></i>Khóa học của tôi</a>
+                                <a href="{{URL::to('/khoa-hoc-cua-toi/'.Session::get('student_id'))}}"><i class="ti-layers"></i>Khóa học của tôi</a>
                             </li>
-                            {{--  <li>
-                                <a href="#"><i class="ti-power-off"></i>Đăng xuất</a>
-                            </li>  --}}
+                            
+                            <li>
+                                <a href="{{URL::to('/logout-checkout')}}"><i class="ti-power-off"></i>Đăng xuất</a>
+                                
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="">Giới thiệu: </label>
                             <br>
-                            <textarea name="" id="student_introduce" class="w-100" rows="5"></textarea>
+                            <textarea name="student_introduce" class="w-100" rows="5"></textarea>
                         </div>
                         <div class="text-right">
                           <span>Lưu ý: <span class="error">*</span> là bắt buộc nhập</span>              

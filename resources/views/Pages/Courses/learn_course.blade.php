@@ -122,13 +122,14 @@
                         </span>
                      </h5>
                   </div>
-                  @endforeach
+                  
                   <div class="col-lg-4 course_header_col">
-                     <a href="all-courses.html" class="course_btn text-white">
+                     <a href="{{URL::to('/khoa-hoc-cua-toi/'.Session::get('student_id'))}}" class="course_btn text-white">
                      <i class="fa fa-chevron-left"></i> Khóa học của tôi</a>
-                     <a href="course-detail.html" class="course_btn text-white">Chi tiết khóa học <i
+                     <a href="{{URL::to('/chi-tiet-khoa-hoc/'.$value->course_id)}}" class="course_btn text-white">Chi tiết khóa học <i
                         class="fa fa-chevron-right"></i></a>
                   </div>
+                  @endforeach
                </div>
             </div>
          </section>

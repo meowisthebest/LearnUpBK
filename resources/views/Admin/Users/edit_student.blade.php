@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="">Giới thiệu: </label>
                             <br>
-                            <textarea name="" id="student_introduce" class="w-100" rows="5">{{$student->student_introduce}}</textarea>
+                            <textarea name="student_introduce" class="w-100" rows="5">{{$student->student_introduce}}</textarea>
                         </div>
                       </div>
                 </div>                   
