@@ -23,6 +23,7 @@ class ChappterController extends Controller
     //Chappter
     public function viewChappter($course_id){
         $this->AuthLogin();
+        
         $course_name = DB::table('tbl_course')->where('tbl_course.course_id', $course_id)->limit(1)->get();
 
         // $course = DB::table('tbl_course')->where('course_id', $course_id)->get();

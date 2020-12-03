@@ -60,6 +60,7 @@ Route::get('/khoa-hoc-cua-toi/{student_id}', 'UserController@showMyCourse');
 Route::get('/learn/{course_id}', 'CourseController@viewLearn');
 Route::post('/enrollment/{course_id}', 'CourseController@errCourse');
 
+Route::get('learn/{course_id}', 'CourseController@viewLearn')->name('viewLearn');
 //Email
 Route::get('/save-email','HomeController@saveEmail');
 

@@ -16,9 +16,6 @@
                 </div>
             </div>
 
-
-
-            
             <div class="col-lg-8 col-md-7">
                 <div class="ed_detail_wrap">
                     <ul class="cources_facts_list">
@@ -31,7 +28,7 @@
                             <li><i class="ti-control-forward"></i>102 Bài học</li>
                         </ul>
                     </div>
-                    <div class="ed_header_short">
+                    <div class="ed_header_short text-justify">
                         <p>{!!$value->course_overview!!}</p>
                     </div>
                     
@@ -51,7 +48,7 @@
         
             <div class="col-lg-8 col-md-8">
                 <!-- Overview -->
-                <div class="edu_wraper border">
+                <div class="edu_wraper border text-justify">
                     <h4 class="edu_title">Tổng quan về khóa học</h4>
                     {!!$value->course_overview!!}		
                     <h6>Bạn sẽ học được gì</h6>
@@ -63,8 +60,6 @@
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Chi tiết khóa học</h4>
                     <div id="accordionExample" class="accordion shadow circullum">
-
-                        <!-- Part 1 -->
                     @foreach ($chappter_course as $key => $chappter_course)
                         <div class="card">
                           <div id="{{$chappter_course->chappter_id}}" class="card-header bg-white shadow-sm border-0">
@@ -80,12 +75,11 @@
                                             {{$keyname->chappter_content_name}}
                                         </div>
                                     </li>
-                                    @endforeach
-                                    
+                                    @endforeach                                   
                                 </ul>
                             </div>
                           </div>
-                        </div>
+                        </div>                       
                     @endforeach
                     </div>
                 </div>

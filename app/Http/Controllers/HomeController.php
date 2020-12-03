@@ -11,7 +11,14 @@ session_start();
 class HomeController extends Controller
 {
     //Hiển thị khóa học & danh mục ra home
-    public function index(){
+    public function index(Request $request){
+        // START SEO
+        $meta_desc = "Học Online tại LearnUp - Nền tảng học tập trực tuyến hàng đầu Việt Nam với hơn 10+ Khoá Học và 3 nghìn học viên.";
+        $meta_keywords = "LearnUp, Học trực tuyến, Online Course";
+        $meta_title = "LearnUp - Nothing is impossible";
+        //Lấy ra đường dẫn trang hiện tại đang đứng
+        $url_caninical = $request->url();
+        // END SEO
         $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->limit(6)->get();
 
         //Khóa học nổi bật
@@ -20,7 +27,15 @@ class HomeController extends Controller
         //Khóa học mới nhất
         $new_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->limit(6)->get();
 
-        return view('index')->with('category', $category)->with('course',$course)->with('newcourse',$new_course);
+        return view('index')
+        ->with('category', $category)
+        ->with('course',$course)
+        ->with('newcourse',$new_course)
+        ->with('meta_desc',$meta_desc)
+        ->with('meta_keywords',$meta_keywords)
+        ->with('meta_title',$meta_title)
+        ->with('url_caninical',$url_caninical)
+        ;
     }
 
     public function search(Request $request){

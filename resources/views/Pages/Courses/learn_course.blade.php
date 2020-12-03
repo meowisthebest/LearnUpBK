@@ -136,7 +136,7 @@
          <div class="container-fluid mt-5">
             <div class="row" id="lesson-container">
                <div class="col-lg-8 order-md-1 course_col" id="video_player_area">
-                  @foreach ($chappter_name as $keyname)
+                  @foreach ($chappter_link as $keyname)
                   <div class="" style="text-align: center">
                      <link rel="stylesheet" href="{{URL::to('public/Learnup/assets/css/plugins/plyr.css')}}" />
                      <div
@@ -145,7 +145,8 @@
                         <div class="plyr__video-embed" id="player">
                            <iframe
                               src="{{$keyname->chappter_content_link}}?origin=https://plyr.io&amp;iv_load_policy=&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-                              allowfullscreen allowtransparency allow="autoplay"></iframe>
+                              allowfullscreen allowtransparency allow="autoplay">
+                           </iframe>
                         </div>
                      </div>
                      <script src="https://cdn.plyr.io/3.6.2/plyr.polyfilled.js"></script>
@@ -217,7 +218,7 @@
                                        <div class="card-body" style="padding: 0px">
                                           <table style="width: 100%">
                                              <tbody>
-                                                @foreach ($chappter_name as $keyname)
+                                                @foreach ($chappter_name as $keyname1)
                                                 <tr style="
                                                    width: 100%;
                                                    padding: 5px 0px;
@@ -230,7 +231,7 @@
                                                             font-size: 14px;
                                                             font-weight: 400;
                                                             ">
-                                                            {{$keyname->chappter_content_name}}
+                                                            {{$keyname1->chappter_content_name}}
                                                          </a>
                                                          <div class="lesson_duration">
                                                             <i class="far fa-play-circle"></i>
@@ -238,9 +239,7 @@
                                                          </div>
                                                       </div>
                                                       <div class="form-group">
-                                                         <input type="checkbox" id=""
-                                                            onchange="markThisLessonAsCompleted(this.id);" value="1"
-                                                            checked="" />
+                                                         <input type="checkbox"/>
                                                          <label for=""></label>
                                                       </div>
                                                    </td>

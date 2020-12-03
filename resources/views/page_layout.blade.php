@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="author"/>
-	<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>LearnUp - Online Course & Education HTML Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />		
+	{{-- seo --}}
+	<meta name="description" content="Học Online tại LearnUp - Nền tảng học tập trực tuyến hàng đầu Việt Nam với hơn 10+ Khoá Học và 3 nghìn học viên."/>
+	<meta name="keywords" content="thol store, trang bị thể hình, quần áo gym, thực phẩm bổ sung"/>
+	<meta name="robots" content="INDEX,FOLLOW"/>
+	<link rel="canonical" href="http://localhost:8080/LearnUp/" />	
+	<meta name="author" content="">
+	<link rel="icon" type="image/x-icon" href="https://edumall.vn/static/version1600623380/frontend/Edumall/winstrike/vi_VN/Magento_Theme/favicon.ico" />
+	{{-- seo --}}
+	<title>LearnUp - Online Course & Education</title>
 	<!-- Custom CSS -->
 	<link href="{{asset('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">
 	<!-- Custom Color Option -->

@@ -111,89 +111,73 @@ class CourseController extends Controller
 
     //====================Front-End====================//
 
-        //Course
-        public function showCourse(){
-            $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
+    //Course
+    public function showCourse(){
+        $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
 
-            $all_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->paginate(5);
+        $all_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->paginate(5);
 
-            return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course);         
+        return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course);         
+    }
+
+    public function courseDetail($course_id){
+        $course_detail = DB::table('tbl_course')
+        ->join('tbl_category','tbl_category.category_id', '=','tbl_course.category_id')
+        ->where('tbl_course.course_id', $course_id)->get();
+
+        $chappter_course = DB::table('tbl_chappter')
+        ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
+        ->where('tbl_course.course_id', $course_id)->get();
+
+        foreach($chappter_course as $value1){
+            $chappter_id = $value1->chappter_id;
         }
 
-        public function courseDetail($course_id){
-            $course_detail = DB::table('tbl_course')
-            ->join('tbl_category','tbl_category.category_id', '=','tbl_course.category_id')
-            ->where('tbl_course.course_id', $course_id)->get();
+        $chappter_name = DB::table('tbl_chappter_content')
+        ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+        ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
-            $chappter_course = DB::table('tbl_chappter')
-            ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
-            ->where('tbl_course.course_id', $course_id)->get();
+        return view('Pages.Courses.course_detail')
+        ->with('course_detail',$course_detail)
+        ->with('chappter_course',$chappter_course)
+        ->with('chappter_name', $chappter_name);   
+    }
+    
+    public function errCourse($course_id){
+        $err_data = array();
+        $err_data['student_id'] = Session::get('student_id');
+        $err_data['course_id'] = $course_id;
+        DB::table('tbl_student_err')->insert($err_data);
+        return redirect()->route('viewLearn', [$course_id]);
+    }
 
-            foreach($chappter_course as $key => $value){
-                $chappter_id = $value->chappter_id;
+    public function viewLearn($course_id){
+        $course_detail = DB::table('tbl_course')
+        ->join('tbl_category','tbl_category.category_id', '=','tbl_course.category_id')
+        ->where('tbl_course.course_id', $course_id)->get();
 
-                $chappter_name = DB::table('tbl_chappter_content')
-                ->select('tbl_chappter_content.chappter_content_name')
-                ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
-                ->where('tbl_chappter.chappter_id', $chappter_id)->get();
-            }
+        $chappter_course = DB::table('tbl_chappter')
+        ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
+        ->where('tbl_course.course_id', $course_id)->get();
 
-            // $chappter_name = DB::table('tbl_chappter')
-            // ->select('tbl_chappter_content.chappter_content_name')
-            // ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
-            // ->where('tbl_chappter.chappter_id', $chappter_id)->get();
-
-            return view('Pages.Courses.course_detail')
-            ->with('course_detail',$course_detail)
-            ->with('chappter_course',$chappter_course)
-            ->with('chappter_name', $chappter_name)
-            ;
-
-            // foreach($chappter_course as $key => $value){
-            //     $chappter_id = $value->chappter_id;
-            // }
-
-            // $chappter_name = DB::table('tbl_chappter')
-            // ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
-            // ->where('tbl_chappter.chappter_id', $chappter_id)->get();
-        }
-
-        public function viewLearn(){
-            return view('Pages.Courses.learn_course');
+        foreach($chappter_course as $key){
+            $chappter_id = $key->chappter_id;
         }
         
-        public function errCourse($course_id){
-            $err_data = array();
-            $err_data['student_id'] = Session::get('student_id');
-            // $err_data['course_id'] = Session::get('course_id');
+        $chappter_name = DB::table('tbl_chappter_content')
+        ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
+        ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+        ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
-            $err_data['course_id'] = $course_id;
-            DB::table('tbl_student_err')->insert($err_data);
-            // return view('Pages.Courses.learn_course');
-            // return Redirect::to('trang-chu'); 
+        $chappter_link = DB::table('tbl_chappter_content')
+        ->select('tbl_chappter_content.chappter_content_link')
+        ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
+        ->where('tbl_chappter.chappter_id', $chappter_id)->limit(1)->get();
 
-
-            $course_detail = DB::table('tbl_course')
-            ->join('tbl_category','tbl_category.category_id', '=','tbl_course.category_id')
-            ->where('tbl_course.course_id', $course_id)->get();
-
-            $chappter_course = DB::table('tbl_chappter')
-            ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
-            ->where('tbl_course.course_id', $course_id)->get();
-
-            foreach($chappter_course as $key => $value){
-                $chappter_id = $value->chappter_id;
-            }
-            
-            $chappter_name = DB::table('tbl_chappter_content')
-                ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
-                ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
-                ->where('tbl_chappter.chappter_id', $chappter_id)->get();
-
-            return view('Pages.Courses.learn_course')
-            ->with('course_detail',$course_detail)
-            ->with('chappter_course',$chappter_course)
-            ->with('chappter_name', $chappter_name);
-
-        }
+        return view('Pages.Courses.learn_course')
+        ->with('course_detail',$course_detail)
+        ->with('chappter_course',$chappter_course)
+        ->with('chappter_link',$chappter_link)
+        ->with('chappter_name', $chappter_name);
+    }
 }

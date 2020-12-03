@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
 		<meta charset="utf-8" />
-		<meta name="author" content="www.frebsite.nl" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />		
-        <title>LearnUp - Online Course & Education</title>
+		{{-- seo --}}
+		<meta name="description" content="{{$meta_desc}}"/>
+		<meta name="keywords" content="{{$meta_keywords}}"/>
+		<meta name="robots" content="INDEX,FOLLOW"/>
+		<link rel="canonical" href="{{$url_caninical}}" />	
+		<meta name="author" content="">
+		<link rel="icon" type="image/x-icon" href="https://edumall.vn/static/version1600623380/frontend/Edumall/winstrike/vi_VN/Magento_Theme/favicon.ico" />
+		{{-- seo --}}
+		<title>{{$meta_title}}</title>
 		<link href="{{('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">	
-		<link rel="stylesheet" href="{{('public/Learnup/assets/css/colors.css')}}">		
+		<link rel="stylesheet" href="{{('public/Learnup/assets/css/colors.css')}}">	
 </head>	
 <body class="red-skin">
     <div id="preloader"><div class="preloader"><span></span><span></span></div></div>
@@ -23,7 +30,7 @@
 					</div>
 					<div class="nav-menus-wrapper" style="transition-property: none;">
 						<ul class="nav-menu">						
-							<li class="active">
+							<li>
 								<a href="{{URL::to('/')}}">Trang Chủ</a>
 							</li>
 							
