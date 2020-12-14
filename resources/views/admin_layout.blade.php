@@ -20,8 +20,6 @@
 
   <!-- Custom styles for this page -->
   <link href="{{asset('public/Admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet"/>
-
-  <link href="{{asset('public/Admin/vendor/validation/validation.css')}}" rel="stylesheet"/>
 </head>
 
 <body id="page-top">

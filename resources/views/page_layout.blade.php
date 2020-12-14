@@ -12,11 +12,8 @@
 	<link rel="icon" type="image/x-icon" href="https://edumall.vn/static/version1600623380/frontend/Edumall/winstrike/vi_VN/Magento_Theme/favicon.ico" />
 	{{-- seo --}}
 	<title>LearnUp - Online Course & Education</title>
-	<!-- Custom CSS -->
 	<link href="{{asset('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">
-	<!-- Custom Color Option -->
 	<link href="{{asset('public/Learnup/assets/css/colors.css')}}" rel="stylesheet">
-	<link href="{{asset('public/Admin/vendor/validation/validation.css')}}" rel="stylesheet"/>
 
 </head>
 <body class="red-skin">

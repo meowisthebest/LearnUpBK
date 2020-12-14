@@ -135,7 +135,7 @@
 					@foreach ($category as $key => $category)
 					
 						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="edu_cat_2 cat-3">
+							<div class="edu_cat_2 cat-6">
 								<div class="edu_cat_icons">
 									<a class="pic-main" href="#"><img src="{{('public/uploads/category/'.$category->category_img)}}" class="img-fluid" alt="" /></a>
 								</div>

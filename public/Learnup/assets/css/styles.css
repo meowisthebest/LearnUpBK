@@ -487,6 +487,11 @@ ul:last-child {
 .bg--error {
   background: #e23636;
 }
+.error {
+    color: #c51244 !important;
+    position: relative;
+    line-height: 1;
+  }
 .bg--success {
   background: #4ebf56;
 }

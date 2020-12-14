@@ -26,7 +26,8 @@ class CheckoutController extends Controller
     	$student_id = DB::table('tbl_student')->insertGetId($data);
 
     	Session::put('student_id',$student_id);
-    	Session::put('student_username',$request->student_username);
+		Session::put('student_username',$request->student_username);
+		Session::put('message_register', 'Đăng ký thành công');
     	return Redirect::to('/login-checkout');
     }
 
@@ -39,10 +40,10 @@ class CheckoutController extends Controller
     		Session::put('student_id',$result->student_id);
     		return Redirect::to('/khoa-hoc');
     	}else{
+            Session::put('message_student', 'Tên đăng nhập hoặc mật khẩu không đúng!');
     		return Redirect::to('/login-checkout');
     	}
 	}
-
 	
 
     public function logoutCheckout(){

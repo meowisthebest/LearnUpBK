@@ -117,7 +117,13 @@ class CourseController extends Controller
 
         $all_course = DB::table('tbl_course')->orderBy('course_id', 'desc')->paginate(5);
 
-        return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course);         
+        $count_course = DB::table('tbl_course')
+        ->select('chappter_content_id')
+        ->join('tbl_chappter','tbl_chappter.course_id','=','tbl_course.course_id')
+        ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')
+        ->count();
+
+        return view('Pages.Courses.all_course')->with('category', $category)->with('course',$all_course)->with('count_course',$count_course);         
     }
 
     public function courseDetail($course_id){
@@ -145,11 +151,19 @@ class CourseController extends Controller
         ->where('tbl_course.course_id', $course_id)->orderBy('fee_id', 'desc')->paginate(3)
         ;
 
+        $count_course = DB::table('tbl_course')
+        ->select('chappter_content_id')
+        ->join('tbl_chappter','tbl_chappter.course_id','=','tbl_course.course_id')
+        ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')
+        ->count();
+
         return view('Pages.Courses.course_detail')
         ->with('course_detail',$course_detail)
         ->with('chappter_course',$chappter_course)
         ->with('chappter_name', $chappter_name)
         ->with('comment',$comment)
+        ->with('count_course',$count_course)
+        
         ;   
     }
     

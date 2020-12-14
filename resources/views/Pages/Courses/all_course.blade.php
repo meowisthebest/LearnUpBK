@@ -118,7 +118,7 @@
                                         <ul>
                                             <li>
                                                 <div class="foot_lecture"><i
-                                                        class="ti-control-skip-forward mr-2"></i>54 Bài giảng
+                                                        class="ti-control-skip-forward mr-2"></i>{{$count_course}} Bài giảng
                                                 </div>
                                             </li>
                                         </ul>

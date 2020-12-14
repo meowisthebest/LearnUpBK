@@ -24,8 +24,8 @@
                     <div class="ed_header_caption">
                         <h2 class="ed_title">{{$value->course_name}}</h2>
                         <ul>
-                            <li><i class="ti-calendar"></i>10 - 20 weeks</li>
-                            <li><i class="ti-control-forward"></i>102 Bài học</li>
+                            <li><i class="ti-calendar"></i>10 - 20 Tuần</li>
+                            <li><i class="ti-control-forward"></i>{{$count_course}} Bài học</li>
                         </ul>
                     </div>
                     <div class="ed_header_short text-justify">
@@ -172,7 +172,7 @@
                     <h4 class="edu_title">Thông tin chung</h4>
                     <ul class="edu_list right">
                         {{--  <li><i class="ti-user"></i>Sinh viên đã đăng ký:<strong>1740</strong></li>  --}}
-                        <li><i class="ti-files"></i>Bài giảng:<strong>10</strong></li>
+                        <li><i class="ti-files"></i>Bài giảng:<strong>{{$count_course}}</strong></li>
                         <li><i class="ti-time"></i>Thời lượng:<strong>60 giờ</strong></li>
                         <li><i class="ti-tag"></i>Yêu cầu kỹ năng:<strong>{{$value->course_lever}}</strong></li>
                     </ul>

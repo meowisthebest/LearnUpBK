@@ -31,6 +31,16 @@
                         </a>
                     </h4>
                     <div class="login-form">
+                      <?php
+                          $message_student = Session::get('message_student');
+                          if($message_student){
+                              echo '<div class="alert alert-danger alert-dismissible out4s" role="alert"> 
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                                        .$message_student.
+                                    '</div>';  
+                              Session::put('message_student', null);
+                          };
+                      ?>
                         <form id="login_form" action="{{URL::to('/dang-nhap')}}" method="POST">	
                             {{ csrf_field() }}   								
                             <div class="form-group">
@@ -70,6 +80,16 @@
                         </a>
                     </h4>
                     <div class="login-form">
+                      <?php
+                          $message_register = Session::get('message_register');
+                          if($message_register){
+                              echo '<div class="alert alert-success alert-dismissible out4s" role="alert"> 
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                                        .$message_register.
+                                    '</div>';  
+                              Session::put('message_register', null);
+                          };
+                      ?>
                     <form id="register_form" action="{{URL::to('/dang-ky')}}" method="POST">    
                         {{ csrf_field() }}             
                         <div class="row">
