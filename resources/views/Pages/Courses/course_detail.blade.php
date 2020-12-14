@@ -55,7 +55,7 @@
                     <ul class="lists-3">
                         {!!$value->course_learned!!}
                     </ul>
-                </div>              
+                </div>            
 
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Chi tiết khóa học</h4>

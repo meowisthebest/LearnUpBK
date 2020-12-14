@@ -140,7 +140,6 @@ class CourseController extends Controller
         }
 
         $chappter_name = DB::table('tbl_chappter_content')
-        // ->select('chappter_content_name')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
@@ -155,6 +154,7 @@ class CourseController extends Controller
         ->select('chappter_content_id')
         ->join('tbl_chappter','tbl_chappter.course_id','=','tbl_course.course_id')
         ->join('tbl_chappter_content','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')
+        ->where('tbl_course.course_id', $course_id)
         ->count();
 
         return view('Pages.Courses.course_detail')
