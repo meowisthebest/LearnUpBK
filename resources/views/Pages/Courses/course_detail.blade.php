@@ -129,7 +129,7 @@
                                     <div class="form-group">
                                         <label>Nhận xét: </label>
                                         <textarea name="comment" class="form-control ht-140" placeholder="Viết nhận xét"></textarea>
-                                        <input style="visibility: hidden" type="text" name="course_id" value="{{$keycomment->course_id}}">
+                                        <input style="visibility: hidden" type="text" name="course_id" value="{{$value->course_id}}">
                                     </div>
                                 </div>
 
