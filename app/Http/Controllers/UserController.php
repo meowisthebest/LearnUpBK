@@ -176,7 +176,7 @@ class UserController extends Controller
     public function updateInfoUser(Request $request,$student_id){
         $data = array();
         // $data['student_username'] = $request->student_username;
-        // $data['student_password'] = md5($request->student_password);
+        $data['student_password'] = md5($request->student_password);
         $data['student_name'] = $request->student_name;
         $data['student_email'] = $request->student_email;
         $data['student_phone'] = $request->student_phone;

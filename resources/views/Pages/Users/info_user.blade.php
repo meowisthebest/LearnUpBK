@@ -72,10 +72,20 @@
                         <div class="dashboard_container">
                             <div class="dashboard_container_body p-4">
                                 <!-- Basic info -->
-                                <form action="{{URL::to('/update-infouser/'.$value->student_id)}}" method="post">
+                                <form id="info_user" action="{{URL::to('/update-infouser/'.$value->student_id)}}" method="post">
                                     {{ csrf_field() }}
                                     <div class="submit-section">
                                         <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Tên tài khoản</label>
+                                                <input readonly name="student_username" type="text" class="form-control" value="{{$value->student_username}}" />
+                                            </div>
+    
+                                            <div class="form-group col-md-6">
+                                                <label>Mật khẩu</label>
+                                                <input name="student_password" type="password" class="form-control"
+                                                    value="{{$value->student_password}}" />
+                                            </div>
                                             <div class="form-group col-md-6">
                                                 <label>Họ và Tên</label>
                                                 <input name="student_name" type="text" class="form-control" value="{{$value->student_name}}" />
@@ -123,5 +133,40 @@
         <!-- Row -->
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+      $("#info_user").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "student_password": {
+                required: "Vui lòng nhập mật khẩu"
+            }
+            "student_name": {
+                required: true,
+                minlength: 5
+            },
+            "student_email": {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+          "student_password": {
+            required: "Vui lòng nhập mật khẩu"
+          },
+          "student_name": {
+            required: "Vui lòng nhập họ và tên",
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          },
+          "student_email": {
+            required: "Vui lòng nhập email"
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          }
+        }
+      });
+    });
+</script>
 <!-- ============================ Dashboard: My Order Start End ================================== -->
 @endsection
