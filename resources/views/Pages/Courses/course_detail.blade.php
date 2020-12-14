@@ -68,6 +68,11 @@
                           <div id="C{{$chappter_course->chappter_id}}" aria-labelledby="{{$chappter_course->chappter_id}}" data-parent="#accordionExample" class="collapse">          
                             <div class="card-body pl-3 pr-3">
                                 <ul class="lectures_lists">
+                                    <?php
+						echo '<pre>';
+						print_r($chappter_name);
+						echo '</pre>';
+					?>
                                     @foreach ($chappter_name as $keyname)
                                     <li>
                                         <div class="lectures_lists_title">
@@ -92,36 +97,24 @@
                     <div class="list-single-main-item-title fl-wrap">
                         <h3>Nhận xét của học viên</h3>
                     </div>
-                    <div class="reviews-comments-wrap">
-                        <!-- reviews-comments-item -->  
-                        <div class="reviews-comments-item">
-                            <div class="reviews-comments-item-text">
-                                <h4><a href="#">Mèo Trắng</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>27 Tháng 4 Năm 2020</span></h4>
-                                <div class="clearfix"></div>
-                                <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
+                    <div class="reviews-comments-wrap w-100">
+                        @foreach ($comment as $keycomment)                         
+                            <!-- reviews-comments-item -->  
+                            <div class="reviews-comments-item">
+                                <div class="reviews-comments-item-text">
+                                    <div class="d-flex justify-content-between">
+                                        <p style="font-size: 18px" class="theme-cl">{{$keycomment->student_name}}</p>
+                                        
+                                        <span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>{{$keycomment->created_at}}</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <p>{{$keycomment->fee_text}}</p>
+                                </div>
                             </div>
-                        </div>
-                        <!--reviews-comments-item end-->  
-                        
-                        <!-- reviews-comments-item -->  
-                        <div class="reviews-comments-item">
-                            <div class="reviews-comments-item-text">
-                                <h4><a href="#">Mèo đen</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>27 Tháng 4 Năm 2020</span></h4>
-                                <div class="clearfix"></div>
-                                <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
-                            </div>
-                        </div>
-                        <!--reviews-comments-item end-->
-                        
-                        <!-- reviews-comments-item -->  
-                        <div class="reviews-comments-item">
-                            <div class="reviews-comments-item-text">
-                                <h4><a href="#">Mèo vàng</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>27 Tháng 4 Năm 2020</span></h4>
-                                <div class="clearfix"></div>
-                                <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
-                            </div>
-                        </div>
-                        <!--reviews-comments-item end-->
+                            <!--reviews-comments-item end-->  
+                        @endforeach
+
+                        {{$comment -> links()}}
                         
                     </div>
                 </div>
@@ -130,20 +123,42 @@
                 <div class="edu_wraper border">
                     <h4 class="edu_title">Thêm nhận xét</h4>
                     <div class="review-form-box form-submit">
-                        <form>
+                        <form action="{{URL::to('/save-comment')}}" method="get" id="comment" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label>Nhận xét: </label>
-                                        <textarea class="form-control ht-140" placeholder="Viết nhận xét"></textarea>
+                                        <textarea name="comment" class="form-control ht-140" placeholder="Viết nhận xét"></textarea>
+                                        <input style="visibility: hidden" type="text" name="course_id" value="{{$keycomment->course_id}}">
                                     </div>
                                 </div>
+
+                                <?php
+                                    $student_id = Session::get('student_id');
+                                    if($student_id != null){ 
+                                ?>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-theme">Bình Luận</button>
+                                        </div>
+                                    </div>
                                 
+                                <?php
+                                    }else{
+                                ?>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <a href="{{URL::to('/login-checkout')}}" class="btn btn-theme">Bình Luận</a>
+                                    </div>
+                                </div>
+                                <?php 
+                                    }
+                                ?>
+                                {{-- <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-theme">Bình Luận</button>
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                             </div>
                         </form>

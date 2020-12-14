@@ -56,7 +56,11 @@
                     <a href="{{URL::to('/view-chappter/'.$course->course_id)}}" class="btn btn-outline-success mt-2">
                       <i class="fas fa-eye"></i>
                       Chi tiết
-                  </a>
+                    </a>
+                    <a href="{{URL::to('/view-comment/'.$course->course_id)}}" class="btn btn-outline-warning mt-2">
+                      <i class="fas fa-eye"></i>
+                      Bình luận
+                    </a>
                     </td>
                 </tr>
             @endforeach

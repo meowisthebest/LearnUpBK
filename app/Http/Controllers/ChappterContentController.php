@@ -86,8 +86,8 @@ class ChappterContentController extends Controller
         $this->AuthLogin();
         DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>0]);
         return back()->withInput();
-
     }
+    
     public function unactive_videos($chappter_content_id){
         $this->AuthLogin();
         DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>1]);

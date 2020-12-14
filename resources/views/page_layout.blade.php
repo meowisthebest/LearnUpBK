@@ -16,6 +16,8 @@
 	<link href="{{asset('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">
 	<!-- Custom Color Option -->
 	<link href="{{asset('public/Learnup/assets/css/colors.css')}}" rel="stylesheet">
+	<link href="{{asset('public/Admin/vendor/validation/validation.css')}}" rel="stylesheet"/>
+
 </head>
 <body class="red-skin">
 	<div id="preloader">
@@ -233,6 +235,7 @@
 	<script src="{{asset('public/Learnup/assets/js/slick.js')}}"></script>
 	<script src="{{asset('public/Learnup/assets/js/jquery.counterup.min.js')}}"></script>
 	<script src="{{asset('public/Learnup/assets/js/counterup.min.js')}}"></script>
+	<script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
 	<script src="{{asset('public/Learnup/assets/js/custom.js')}}"></script>
 	
 	<!-- This page plugins -->

@@ -134,13 +134,23 @@ class CourseController extends Controller
         }
 
         $chappter_name = DB::table('tbl_chappter_content')
+        // ->select('chappter_content_name')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->get();
+
+        $comment = DB::table('tbl_feedback')
+        ->select('*','tbl_feedback.created_at')
+        ->join('tbl_student','tbl_student.student_id','=','tbl_feedback.student_id')
+        ->join('tbl_course','tbl_feedback.course_id','=','tbl_course.course_id')
+        ->where('tbl_course.course_id', $course_id)->orderBy('fee_id', 'desc')->paginate(3)
+        ;
 
         return view('Pages.Courses.course_detail')
         ->with('course_detail',$course_detail)
         ->with('chappter_course',$chappter_course)
-        ->with('chappter_name', $chappter_name);   
+        ->with('chappter_name', $chappter_name)
+        ->with('comment',$comment)
+        ;   
     }
     
     public function errCourse($course_id){
@@ -165,7 +175,7 @@ class CourseController extends Controller
         }
         
         $chappter_name = DB::table('tbl_chappter_content')
-        ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
+        // ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
@@ -179,5 +189,15 @@ class CourseController extends Controller
         ->with('chappter_course',$chappter_course)
         ->with('chappter_link',$chappter_link)
         ->with('chappter_name', $chappter_name);
+    }
+
+    public function active_mandatory($chappter_content_id){
+        DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>0]);
+        return back()->withInput();
+    }
+    
+    public function unactive_mandatory($chappter_content_id){
+        DB::table('tbl_chappter_content')->where('chappter_content_id',$chappter_content_id)->update(['is_mandatory'=>1]);
+        return back()->withInput();
     }
 }

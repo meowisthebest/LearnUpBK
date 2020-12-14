@@ -231,8 +231,6 @@
 
   <script src="{{asset('public/Admin/ckeditor/ckeditor.js')}}"></script>
 
-  {{--  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>  --}}
-
   <script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
   <script>
     CKEDITOR.replace('ckeditorLearned');

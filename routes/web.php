@@ -57,12 +57,16 @@ Route::get('/khoa-hoc-cua-toi/{student_id}', 'UserController@showMyCourse');
 
 
 //Learn
-Route::get('/learn/{course_id}', 'CourseController@viewLearn');
+Route::get('/learn/{course_id}', 'CourseController@viewLearn')->name('viewLearn');
 Route::post('/enrollment/{course_id}', 'CourseController@errCourse');
+Route::get('/unactive-mandatory/{chappter_content_id}','CourseController@unactive_mandatory');
+Route::get('/active-mandatory/{chappter_content_id}','CourseController@active_mandatory');
 
-Route::get('learn/{course_id}', 'CourseController@viewLearn')->name('viewLearn');
 //Email
 Route::get('/save-email','HomeController@saveEmail');
+
+//Comment
+Route::get('/save-comment', 'CommentController@saveComment');
 
 
 //------------------------------------------------BACK - END------------------------------------------------//
@@ -125,6 +129,12 @@ Route::get('/delete-chappter-content/{chappter_content_id}', 'ChappterContentCon
 
 Route::get('/unactive-video/{chappter_content_id}','ChappterContentController@unactive_videos');
 Route::get('/active-video/{chappter_content_id}','ChappterContentController@active_videos');
+
+//Comment
+Route::get('/view-comment/{course_id}', 'CommentController@viewComment');
+Route::get('/delete-comment/{fee_id}', 'CommentController@deleteComment');
+
+
 
 //Account
 Route::get('/list-account-admin', 'UserController@showAdmin');

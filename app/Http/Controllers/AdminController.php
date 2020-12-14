@@ -36,9 +36,6 @@ class AdminController extends Controller
         $count_message = DB::table('tbl_contact')->select('contact_id')->count();
         $count_blog = DB::table('tbl_blog')->select('blog_id')->count();     
 
-
-
-
         $manager_course = view('Admin.Dashboard.dashboard')
         ->with('count_course', $count_course)
         ->with('count_student',$count_student)
@@ -47,10 +44,6 @@ class AdminController extends Controller
         ->with('count_message',$count_message)
         ->with('count_blog',$count_blog)
         ;
-
-        // return view('admin_layout')->with('Admin.Users.edit_student', $manager_student);
-
-        // return view('Admin.Dashboard.dashboard')->with('count_course', $count_course);
         return view('admin_layout')->with('Admin.Dashboard.dashboard', $manager_course);
 
     }
@@ -67,7 +60,7 @@ class AdminController extends Controller
             Session::put('admin_id', $result->admin_id);
             return Redirect::to('/dashboard');
         }else{
-            Session::put('message', 'Mật khẩu hoặc tài khoản sai');
+            Session::put('message_admin', 'Tên đăng nhập hoặc mật khẩu không đúng!');
             return Redirect::to('/admin');
         }
     }

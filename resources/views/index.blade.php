@@ -12,8 +12,9 @@
 		<link rel="icon" type="image/x-icon" href="https://edumall.vn/static/version1600623380/frontend/Edumall/winstrike/vi_VN/Magento_Theme/favicon.ico" />
 		{{-- seo --}}
 		<title>{{$meta_title}}</title>
-		<link href="{{('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">	
-		<link rel="stylesheet" href="{{('public/Learnup/assets/css/colors.css')}}">	
+		<link href="{{asset('public/Learnup/assets/css/styles.css')}}" rel="stylesheet">	
+		<link rel="stylesheet" href="{{asset('public/Learnup/assets/css/colors.css')}}">	
+		<link href="{{asset('public/Admin/vendor/validation/validation.css')}}" rel="stylesheet"/>
 </head>	
 <body class="red-skin">
     <div id="preloader"><div class="preloader"><span></span><span></span></div></div>
@@ -130,8 +131,9 @@
 					</div>
 				</div>
 				
-				<div class="row">
+				<div class="row">					
 					@foreach ($category as $key => $category)
+					
 						<div class="col-lg-4 col-md-4 col-sm-6">
 							<div class="edu_cat_2 cat-3">
 								<div class="edu_cat_icons">
@@ -401,14 +403,15 @@
 		<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 	</div>
 		<!-- End Wrapper -->
-		<script src="{{('public/Learnup/assets/js/jquery.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/popper.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/bootstrap.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/select2.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/slick.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/jquery.counterup.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/counterup.min.js')}}"></script>
-		<script src="{{('public/Learnup/assets/js/custom.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/jquery.min.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/popper.min.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/select2.min.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/slick.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/jquery.counterup.min.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/counterup.min.js')}}"></script>
+		<script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
+		<script src="{{asset('public/Learnup/assets/js/custom.js')}}"></script>
 
 	</body>
 </html>

@@ -56,6 +56,7 @@ class ChappterController extends Controller
         DB::table('tbl_chappter')->insert($data);
         Session::put('message_chappter', 'Thêm chương thành công');
         return back()->withInput();
+        // return redirect()->route('view-chappter');
     }
 
     public function editChappter($chappter_id){

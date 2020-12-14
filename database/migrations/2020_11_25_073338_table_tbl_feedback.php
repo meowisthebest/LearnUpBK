@@ -16,10 +16,10 @@ class TableTblFeedback extends Migration
         Schema::create('tbl_feedback', function (Blueprint $table) {
             $table->bigIncrements('fee_id');
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('err_id');
+            $table->unsignedBigInteger('course_id');
             $table->text('fee_text');
             $table->timestamps();
-            $table->foreign('err_id')->references('err_id')->on('tbl_student_err');
+            $table->foreign('course_id')->references('course_id')->on('tbl_course');
             $table->foreign('student_id')->references('student_id')->on('tbl_student');
         });
     }

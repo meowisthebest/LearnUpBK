@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
         $data = array();
         $data['category_name'] = $request->category_name;
-
+        $data["created_at"] =  \Carbon\Carbon::now(); # new \Datetime()
         $get_image = $request->file('category_img');
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -69,6 +69,10 @@ class CategoryController extends Controller
     public function updateCategory(Request $request,$category_id){
         $data = array();
         $data['category_name'] = $request->category_name;
+
+
+        $data["updated_at"] = \Carbon\Carbon::now();  # new \Datetime()
+
         $get_image = $request->file('category_img');
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -95,6 +99,8 @@ class CategoryController extends Controller
   
     public function showCategoryHome($category_id){
         $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
+
+
         $category_by_id = DB::table('tbl_course')
         ->join('tbl_category','tbl_course.category_id', '=', 'tbl_category.category_id')
         ->where('tbl_course.category_id',$category_id)->paginate(5);

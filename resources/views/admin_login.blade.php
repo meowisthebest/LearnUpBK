@@ -41,7 +41,17 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
                   <hr>
-                  <form class="user" action="{{URL::to('/admin-dashboard')}}" method="POST">
+                  <?php
+                      $message_admin = Session::get('message_admin');
+                      if($message_admin){
+                          echo '<div class="alert alert-danger alert-dismissible out4s" role="alert"> 
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'
+                                    .$message_admin.
+                                '</div>';  
+                          Session::put('message_admin', null);
+                      };
+                  ?>
+                  <form class="user" id="admin_login" action="{{URL::to('/admin-dashboard')}}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group">
                       <input type="text" name="admin_username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="UserName">
@@ -68,15 +78,39 @@
 
   </div>
 
-  <!-- Bootstrap core JavaScript-->
   <script src="{{asset('public/Admin/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('public/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-  <!-- Core plugin JavaScript-->
   <script src="{{asset('public/Admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-  <!-- Custom scripts for all pages-->
+  <script src="{{asset('public/Admin/vendor/validation/validation.js')}}"></script>
   <script src="{{asset('public/Admin/js/sb-admin-2.min.js')}}"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#admin_login").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+          "admin_username": {
+            required: true,
+            minlength: 5
+          },
+          "admin_password": {
+            required: true
+          }
+        },
+        messages: {
+          "admin_username": {
+            required: "Bạn chưa điền tên đăng nhập",
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          },
+          "admin_password": {
+            required: "Vui lòng nhập mật khẩu"
+          }
+        }
+      });
+    });
+</script>
 
 </body>
 

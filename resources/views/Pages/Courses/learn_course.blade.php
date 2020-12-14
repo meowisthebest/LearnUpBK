@@ -214,7 +214,8 @@
                                                 <tr style="
                                                    width: 100%;
                                                    padding: 5px 0px;
-                                                   background-color: #e6f2f5;
+                                                   background-color: #fff;
+                                                   border-bottom: 1px solid rgb(153, 153, 153);
                                                    ">
                                                    <td class="d-flex justify-content-between" style="text-align: left; padding: 7px 10px">
                                                       <div>
@@ -230,9 +231,24 @@
                                                             4 Min
                                                          </div>
                                                       </div>
-                                                      <div class="form-group">
-                                                         <input type="checkbox"/>
-                                                         <label for=""></label>
+                                                      <div class="form-group pd-3">
+                                                         <span class="text-ellipsis">
+                                                            <?php
+                                                            if($keyname1 -> is_mandatory == 0){
+                                                              ?>
+                                                              <a href="{{URL::to('/unactive-mandatory/'.$keyname1->chappter_content_id)}}">
+                                                                <i class="fa fa-times text-danger"></i>
+                                                              </a>
+                                                              <?php
+                                                              }else{
+                                                              ?>  
+                                                              <a href="{{URL::to('/active-mandatory/'.$keyname1->chappter_content_id)}}">
+                                                                <i class="fa fa-check text-success"></i>
+                                                              </a>
+                                                              <?php
+                                                            }
+                                                            ?>
+                                                          </span>
                                                       </div>
                                                    </td>
                                                 </tr>

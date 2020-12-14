@@ -31,7 +31,7 @@
                         </a>
                     </h4>
                     <div class="login-form">
-                        <form action="{{URL::to('/dang-nhap')}}" method="POST">	
+                        <form id="login_form" action="{{URL::to('/dang-nhap')}}" method="POST">	
                             {{ csrf_field() }}   								
                             <div class="form-group">
                                 <label>Tên tài khoản</label>
@@ -70,7 +70,7 @@
                         </a>
                     </h4>
                     <div class="login-form">
-                    <form action="{{URL::to('/dang-ky')}}" method="POST">    
+                    <form id="register_form" action="{{URL::to('/dang-ky')}}" method="POST">    
                         {{ csrf_field() }}             
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
@@ -110,4 +110,70 @@
         
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+      $("#login_form").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+          "student_username": {
+            required: true,
+            minlength: 5
+          },
+          "student_password": {
+            required: true
+          }
+        },
+        messages: {
+          "student_username": {
+            required: "Bạn chưa điền tên đăng nhập",
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          },
+          "student_password": {
+            required: "Vui lòng nhập mật khẩu"
+          }
+        }
+      });
+
+      $("#register_form").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+          "student_name": {
+            required: true,
+            minlength: 5
+          },
+          "student_email": {
+            required: true
+          },
+          "student_username": {
+            required: true,
+            minlength: 5
+          },
+          "student_password": {
+            required: true
+          }
+        },
+        messages: {
+          "student_username": {
+            required: "Bạn chưa điền tên đăng nhập",
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          },
+          "student_password": {
+            required: "Vui lòng nhập mật khẩu"
+          },
+          "student_name": {
+            required: "Vui lòng điền họ và tên",
+            minlength: "Hãy nhập tối thiểu 5 ký tự"
+          },
+          "student_email": {
+            required: "Vui lòng nhập email"
+          }
+        }
+      });
+    });
+</script>
 @endsection
