@@ -219,7 +219,7 @@
                                                    ">
                                                    <td class="d-flex justify-content-between" style="text-align: left; padding: 7px 10px">
                                                       <div>
-                                                         <a href="#" id="" style="
+                                                         <a href="{{URL::to('/learn/'.$value->course_id.'/'.$keyname1->chappter_content_id)}}" id="" style="
                                                             color: #444549;
                                                             font-size: 14px;
                                                             font-weight: 400;

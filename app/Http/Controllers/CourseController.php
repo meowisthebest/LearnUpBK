@@ -157,22 +157,45 @@ class CourseController extends Controller
         ->where('tbl_course.course_id', $course_id)
         ->count();
 
+
+
+
         return view('Pages.Courses.course_detail')
         ->with('course_detail',$course_detail)
         ->with('chappter_course',$chappter_course)
         ->with('chappter_name', $chappter_name)
         ->with('comment',$comment)
         ->with('count_course',$count_course)
-        
+
+
         ;   
     }
     
-    public function errCourse($course_id){
-        $err_data = array();
-        $err_data['student_id'] = Session::get('student_id');
-        $err_data['course_id'] = $course_id;
-        DB::table('tbl_student_err')->insert($err_data);
-        return redirect()->route('viewLearn', [$course_id]);
+    // public function errCourse($course_id){
+    //     $err_data = array();
+    //     $err_data['student_id'] = Session::get('student_id');
+    //     $err_data['course_id'] = $course_id;
+    //     DB::table('tbl_student_err')->insert($err_data);
+    //     return redirect()->route('viewLearn', [$course_id]);
+    // }
+
+    public function errCourse(Request $request ,$course_id) {
+        $student_id = Session::get('student_id');
+        $record = DB::table('tbl_student_err')->where(['course_id'=>$course_id,'student_id'=>$student_id])->get();
+
+        if ($record != null) {     
+            $err_data = array();
+            $err_data['student_id'] = Session::get('student_id');
+            $err_data['course_id'] = $request->$course_id;  
+            DB::table('tbl_student_err')->update($err_data);
+            return redirect()->route('viewLearn', [$course_id]);
+        } else {
+            $err_data = array();
+            $err_data['student_id'] = Session::get('student_id');
+            $err_data['course_id'] = $course_id;
+            DB::table('tbl_student_err')->insert($err_data);
+            return redirect()->route('viewLearn', [$course_id]);
+        }
     }
 
     public function viewLearn($course_id){

@@ -62,6 +62,12 @@ Route::post('/enrollment/{course_id}', 'CourseController@errCourse');
 Route::get('/unactive-mandatory/{chappter_content_id}','CourseController@unactive_mandatory');
 Route::get('/active-mandatory/{chappter_content_id}','CourseController@active_mandatory');
 
+// Route::post('/enrollment/{course_id}/{chappter_content_id}', 'CourseController@errCourse');
+
+
+// Route::get('/learn/{course_id}/{chappter_content_id}', 'CourseController@viewLearn')->name('viewLearn');
+
+
 //Email
 Route::get('/save-email','HomeController@saveEmail');
 

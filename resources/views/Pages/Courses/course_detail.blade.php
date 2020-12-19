@@ -54,6 +54,7 @@
                     <h6>Bạn sẽ học được gì</h6>
                     <ul class="lists-3">
                         {!!$value->course_learned!!}
+                       
                     </ul>
                 </div>            
 
@@ -68,11 +69,11 @@
                           <div id="C{{$chappter_course->chappter_id}}" aria-labelledby="{{$chappter_course->chappter_id}}" data-parent="#accordionExample" class="collapse">          
                             <div class="card-body pl-3 pr-3">
                                 <ul class="lectures_lists">
-                                    <?php
-						echo '<pre>';
-						print_r($chappter_name);
-						echo '</pre>';
-					?>
+                                    {{-- <?php
+                                        echo '<pre>';
+                                        print_r($chappter_name);
+                                        echo '</pre>';
+                                    ?> --}}
                                     @foreach ($chappter_name as $keyname)
                                     <li>
                                         <div class="lectures_lists_title">
@@ -88,8 +89,6 @@
                     @endforeach
                     </div>
                 </div>
-                
-
                 
             
                 <!-- Reviews -->
@@ -185,17 +184,16 @@
                             <div class="ed_view_link">
                                 <button type="submit" class="btn btn-theme enroll-btn">Học Ngay<i class="ti-angle-right"></i></button>
                             </div>
-                        </form> 
-                    
+                        </form>                        
                     <?php
                         }else{
                     ?>
                         <div class="ed_view_link">
                             <a href="{{URL::to('/login-checkout')}}" class="btn btn-theme enroll-btn">Học Ngay<i class="ti-angle-right"></i></a>
                         </div>
-                    <?php 
+                    <?php       
                         }
-                    ?>
+                    ?>           
                 </div>
                 
             </div>
