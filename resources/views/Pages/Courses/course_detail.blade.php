@@ -67,6 +67,11 @@
                             <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#C{{$chappter_course->chappter_id}}" aria-expanded="false" aria-controls="C{{$chappter_course->chappter_id}}" class="d-block position-relative text-dark collapsible-link py-2 collapsed">{{$chappter_course->chappter_name}}</a></h6>
                           </div>
                           <div id="C{{$chappter_course->chappter_id}}" aria-labelledby="{{$chappter_course->chappter_id}}" data-parent="#accordionExample" class="collapse">          
+                            <?php
+                                echo '<pre>';
+                                print_r($chappter_course->chappter_id);
+                                echo '</pre>';
+                            ?>
                             <div class="card-body pl-3 pr-3">
                                 <ul class="lectures_lists">
                                     {{-- <?php

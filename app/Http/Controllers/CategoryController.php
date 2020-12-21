@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Category;
+use App\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,8 +25,8 @@ class CategoryController extends Controller
     //Category
     public function listCategory(){
         $this->AuthLogin();
-
-        $list_category = DB::table('tbl_category')->get();
+        $list_category = Category::all();
+        // $list_category = DB::table('tbl_category')->get();
         $manager_category = view('Admin.Categories.list_category')->with('list_category', $list_category);
         return view('admin_layout')->with('Admin.Categories.list_category', $manager_category);
     }
@@ -60,7 +62,9 @@ class CategoryController extends Controller
     public function editCategory($category_id){
         $this->AuthLogin();
 
-        $edit_category = DB::table('tbl_category')->where('category_id', $category_id)->get();
+        // $edit_category = DB::table('tbl_category')->where('category_id', $category_id)->get();
+        $edit_category = Category::where('category_id',$category_id)->get();
+
         $manager_category = view('Admin.Categories.edit_category')->with('edit_category', $edit_category);
 
         return view('admin_layout')->with('Admin.Categories.edit_category', $manager_category);
@@ -69,10 +73,7 @@ class CategoryController extends Controller
     public function updateCategory(Request $request,$category_id){
         $data = array();
         $data['category_name'] = $request->category_name;
-
-
         $data["updated_at"] = \Carbon\Carbon::now();  # new \Datetime()
-
         $get_image = $request->file('category_img');
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
@@ -91,22 +92,26 @@ class CategoryController extends Controller
 
     public function deleteCategory($category_id){
         $this->AuthLogin();
-
-        DB::table('tbl_category')->where('category_id', $category_id)->delete();
+        Category::destroy($category_id);
+        // DB::table('tbl_category')->where('category_id', $category_id)->delete();
         Session::put('message_category', 'Xóa danh mục thành công');
         return Redirect::to('list-category');
     }
   
     public function showCategoryHome($category_id){
-        $category = DB::table('tbl_category')->orderBy('category_id', 'asc')->get();
+        // $category = DB::table('tbl_category')->orderBy('category_id', 'DESC')->get();
+        $category = Category::orderBy('category_id','ASC')->get();
 
 
-        $category_by_id = DB::table('tbl_course')
-        ->join('tbl_category','tbl_course.category_id', '=', 'tbl_category.category_id')
-        ->where('tbl_course.category_id',$category_id)->paginate(5);
+        // $category_by_id = DB::table('tbl_course')
+        // ->join('tbl_category','tbl_course.category_id', '=', 'tbl_category.category_id')
+        // ->where('tbl_course.category_id',$category_id)->paginate(5);
+
+        $category_by_id = Course::Where('category_id',$category_id)->paginate(2);
 
         //Lấy tên danh mục
-        $category_name = DB::table('tbl_category')->where('tbl_category.category_id', $category_id)->limit(1)->get();
+        // $category_name = DB::table('tbl_category')->where('tbl_category.category_id', $category_id)->limit(1)->get();
+        $category_name = Category::Where('category_id',$category_id)->limit(1)->get();
 
         return view('Pages.Categories.filter_category')
         ->with('category', $category)

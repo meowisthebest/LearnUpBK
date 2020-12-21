@@ -41,7 +41,7 @@
                 <tr class="text-center">
                     <td>{{$course->course_id}}</td>
                     <td>{{$course->course_name}}</td>
-                    <td>{{$course->category_name}}</td>
+                    <td>{{$course->category_id}}</td>
                     <td>
                         <img class="course-img" src="{{URL::to('public/uploads/course/'.$course->course_img)}}" alt="" />
                     </td>

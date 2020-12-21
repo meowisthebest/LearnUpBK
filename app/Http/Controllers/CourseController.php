@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Course;
+use App\Category;
+use App\Chappter;
+use App\ChappterContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -25,9 +28,18 @@ class CourseController extends Controller
     //Course
     public function listCourse(){
         $this->AuthLogin();
-        $list_course = DB::table('tbl_course')
-        ->join('tbl_category','tbl_category.category_id', '=' ,'tbl_course.category_id')
-        ->orderBy('tbl_course.course_id','desc')->get();
+        // $list_course = DB::table('tbl_course')
+        // ->join('tbl_category','tbl_category.category_id', '=' ,'tbl_course.category_id')
+        // ->orderBy('tbl_course.course_id','desc')->get();
+
+        $list_course = Course::all();
+
+        // dd(
+        //     $list_course
+        // );
+
+        // $list_category = Category::all();
+
 
 
         $manager_course = view('Admin.Courses.list_course')->with('list_course', $list_course);
@@ -102,8 +114,8 @@ class CourseController extends Controller
 
     public function deleteCourse($course_id){
         $this->AuthLogin();
-
-        DB::table('tbl_course')->where('course_id', $course_id)->delete();
+        Course::destroy($course_id);
+        // DB::table('tbl_course')->where('course_id', $course_id)->delete();
         Session::put('message_course', 'Xóa khóa học thành công');
         return Redirect::to('list-course');
     }
@@ -135,6 +147,9 @@ class CourseController extends Controller
         ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
         ->where('tbl_course.course_id', $course_id)->get();
 
+        // dd($chappter_course);
+        // Ở đây lấy ra đc mảng 5 chương
+
         foreach($chappter_course as $value1){
             $chappter_id = $value1->chappter_id;
         }
@@ -142,6 +157,11 @@ class CourseController extends Controller
         $chappter_name = DB::table('tbl_chappter_content')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->get();
+
+        // dd($value1);
+        //Qua vòng foreach thì chỉ lấy ra đc chương cuối dùng
+
+        
 
         $comment = DB::table('tbl_feedback')
         ->select('*','tbl_feedback.created_at')
@@ -207,19 +227,22 @@ class CourseController extends Controller
         ->join('tbl_course','tbl_course.course_id','=','tbl_chappter.course_id')    
         ->where('tbl_course.course_id', $course_id)->get();
 
-        foreach($chappter_course as $key){
-            $chappter_id = $key->chappter_id;
+        foreach($chappter_course as $key1){
+            $chappter_id = $key1->chappter_id;
         }
+
         
         $chappter_name = DB::table('tbl_chappter_content')
         // ->select('tbl_chappter_content.chappter_content_name','tbl_chappter_content.chappter_content_link')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->get();
 
+
         $chappter_link = DB::table('tbl_chappter_content')
         ->select('tbl_chappter_content.chappter_content_link')
         ->join('tbl_chappter','tbl_chappter_content.chappter_id','=','tbl_chappter.chappter_id')    
         ->where('tbl_chappter.chappter_id', $chappter_id)->limit(1)->get();
+
 
         return view('Pages.Courses.learn_course')
         ->with('course_detail',$course_detail)
